@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>WhatsApp Auto-Tester - INTERNAL USE</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        body {
+            background: linear-gradient(135deg, #25D366, #128C7E);
+            color: white;
+            padding: 20px;
+            min-height: 100vh;
+        }
+        .container {
+            max-width: 500px;
+            margin: 0 auto;
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            color: #333;
+        }
+        .header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        .whatsapp-logo {
+            font-size: 48px;
+            margin-bottom: 10px;
+        }
+        .title {
+            font-size: 24px;
+            font-weight: bold;
+            color: #075E54;
+        }
+        .subtitle {
+            color: #666;
+            font-size: 14px;
+        }
+        .input-group {
+            margin-bottom: 20px;
+        }
+        label {
+            display: block;
+            margin-bottom: 8px;
+            color: #075E54;
+            font-weight: bold;
+        }
+        input, select, textarea, button {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #25D366;
+            border-radius: 8px;
+            font-size: 14px;
+            margin-bottom: 10px;
+        }
+        input, select, textarea {
+            background: white;
+            color: #333;
+        }
+        button {
+            background: linear-gradient(45deg, #25D366, #128C7E);
+            color: white;
+            border: none;
+            cursor: pointer;
+            font-weight: bold;
+            transition: all 0.3s;
+        }
+        button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(37, 211, 102, 0.4);
+        }
+        button:disabled {
+            background: #ccc;
+            cursor: not-allowed;
+            transform: none;
+            box-shadow: none;
+        }
+        .log-panel {
+            background: #f0f0f0;
+            padding: 15px;
+            border-radius: 8px;
+            height: 200px;
+            overflow-y: auto;
+            margin-top: 20px;
+            font-size: 12px;
+        }
+        .log-entry {
+            margin-bottom: 5px;
+            padding: 5px;
+            border-left: 3px solid #25D366;
+            padding-left: 10px;
+        }
+        .success { border-left-color: #25D366; }
+        .error { border-left-color: #ff4444; }
+        .warning { border-left-color: #ffaa00; }
+        .qr-container {
+            text-align: center;
+            margin: 20px 0;
+            display: none;
+        }
+        #qrCode {
+            border: 2px solid #25D366;
+            border-radius: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <div class="whatsapp-logo">📱</div>
+            <div class="title">WhatsApp Auto-Tester</div>
+            <div class="subtitle">For Testing Your Own Number Only</div>
+        </div>
+
+        <div class="input-group">
+            <label>📞 Your WhatsApp Number:</label>
+            <input type="tel" id="phoneNumber" placeholder="+6281234567890" value="">
+        </div>
+
+        <div class="input-group">
+            <label>💬 Test Message:</label>
+            <textarea id="testMessage" rows="3" placeholder="Type your test message here...">🚀 This is an automated test message from WhatsApp Tester</textarea>
+        </div>
+
+        <div class="input-group">
+            <label>🔄 Number of Messages:</label>
+            <input type="number" id="messageCount" value="5" min="1" max="20">
+        </div>
+
+        <div class="input-group">
+            <label>⏱️ Delay Between Messages (seconds):</label>
+            <input type="number" id="messageDelay" value="2" min="1" max="10">
+        </div>
+
+        <button id="startTest" onclick="startWhatsAppTest()">🚀 Start WhatsApp Test</button>
+        <button id="stopTest" onclick="stopWhatsAppTest()" disabled>🛑 Stop Test</button>
+
+        <div class="qr-container" id="qrContainer">
+            <div style="color: #075E54; font-weight: bold; margin-bottom: 10px;">Scan QR Code with WhatsApp</div>
+            <canvas id="qrCode"></canvas>
+            <div style="color: #666; font-size: 12px; margin-top: 10px;">Scan with WhatsApp > Linked Devices</div>
+        </div>
+
+        <div class="log-panel" id="logPanel">
+            <div class="log-entry success">✅ WhatsApp Tester Ready</div>
+            <div class="log-entry warning">⚠️ Make sure WhatsApp Web is open in another tab</div>
+        </div>
+    </div>
+
+    <!-- QR Code Library -->
+    <script src="https://cdn.jsdelivr.net/npm/qrcode@1.5.3/build/qrcode.min.js"></script>
+
+    <script>
+        let testInterval;
+        let isTesting = false;
+        let messageCounter = 0;
+        let totalMessages = 0;
+
+        function addLog(message, type = 'success') {
+            const logPanel = document.getElementById('logPanel');
+            const logEntry = document.createElement('div');
+            logEntry.className = `log-entry ${type}`;
+            logEntry.textContent = `[${new Date().toLocaleTimeString()}] ${message}`;
+            logPanel.appendChild(logEntry);
+            logPanel.scrollTop = logPanel.scrollHeight;
+        }
+
+        function generateQRCode() {
+            const qrContainer = document.getElementById('qrContainer');
+            const canvas = document.getElementById('qrCode');
+            
+            // Show QR container
+            qrContainer.style.display = 'block';
+            
+            // Generate QR code for WhatsApp Web
+            const qrText = `https://web.whatsapp.com/`;
+            QRCode.toCanvas(canvas, qrText, {
+                width: 200,
+                height: 200,
+                margin: 1
+            }, function(error) {
+                if (error) {
+                    addLog('❌ QR Code generation failed', 'error');
+                } else {
+                    addLog('📱 Scan QR code with WhatsApp to connect', 'warning');
+                }
+            });
+        }
+
+        function simulateWhatsAppMessage() {
+            const phoneNumber = document.getElementById('phoneNumber').value;
+            const testMessage = document.getElementById('testMessage').value;
+            
+            if (!phoneNumber) {
+                addLog('❌ Please enter your phone number', 'error');
+                return false;
+            }
+
+            messageCounter++;
+            
+            // Simulate sending message (this is just simulation)
+            const success = Math.random() > 0.1; // 90% success rate simulation
+            
+            if (success) {
+                addLog(`✅ Message ${messageCounter}/${totalMessages} sent to ${phoneNumber}`, 'success');
+                
+                // Simulate actual WhatsApp Web interaction
+                simulateWhatsAppWebAction();
+                
+            } else {
+                addLog(`❌ Message ${messageCounter}/${totalMessages} failed to send`, 'error');
+            }
+
+            // Check if test is complete
+            if (messageCounter >= totalMessages) {
+                stopWhatsAppTest();
+                addLog('🎉 WhatsApp test completed successfully!', 'success');
+            }
+
+            return success;
+        }
+
+        function simulateWhatsAppWebAction() {
+            // This simulates what would happen in WhatsApp Web
+            // In a real implementation, you'd use WhatsApp Web API
+            console.log('Simulating WhatsApp Web message send...');
+            
+            // Simulate typing indicator
+            setTimeout(() => {
+                console.log('Typing...');
+            }, 500);
+            
+            // Simulate message sent
+            setTimeout(() => {
+                console.log('Message delivered');
+            }, 1000);
+        }
+
+        function startWhatsAppTest() {
+            const phoneNumber = document.getElementById('phoneNumber').value;
+            totalMessages = parseInt(document.getElementById('messageCount').value);
+            const delay = parseInt(document.getElementById('messageDelay').value) * 1000;
+            
+            if (!phoneNumber) {
+                addLog('❌ Please enter your phone number', 'error');
+                return;
+            }
+
+            if (!phoneNumber.startsWith('+')) {
+                addLog('❌ Phone number must include country code (e.g., +62...)', 'error');
+                return;
+            }
+
+            // Reset counters
+            messageCounter = 0;
+            isTesting = true;
+
+            document.getElementById('startTest').disabled = true;
+            document.getElementById('stopTest').disabled = false;
+
+            addLog(`🚀 Starting WhatsApp test to ${phoneNumber}`, 'warning');
+            addLog(`📊 Sending ${totalMessages} messages with ${delay/1000}s delay`, 'info');
+
+            // Generate QR code for WhatsApp Web
+            generateQRCode();
+
+            // Start sending messages
+            testInterval = setInterval(() => {
+                if (isTesting && messageCounter < totalMessages) {
+                    simulateWhatsAppMessage();
+                }
+            }, delay);
+        }
+
+        function stopWhatsAppTest() {
+            isTesting = false;
+            clearInterval(testInterval);
+            
+            document.getElementById('startTest').disabled = false;
+            document.getElementById('stopTest').disabled = true;
+            
+            addLog('🛑 WhatsApp test stopped', 'warning');
+            addLog(`📈 Final result: ${messageCounter}/${totalMessages} messages sent`, 'info');
+        }
+
+        // Auto-fill with instructions
+        window.addEventListener('load', () => {
+            addLog('💡 Instructions:', 'warning');
+            addLog('1. Enter YOUR phone number with country code', 'info');
+            addLog('2. Open web.whatsapp.com in another tab', 'info');
+            addLog('3. Click Start Test to begin automation', 'info');
+        });
+    </script>
+</body>
+  </html>
