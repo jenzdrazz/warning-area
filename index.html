@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="id">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <!-- ========== WHATSAPP LINK PREVIEW ========== -->
+          <!-- ========== WHATSAPP LINK PREVIEW ========== -->
   <title>JENZTYZZ AREAA</title>
   <meta name="description" content="LETSS CLICK THIS LINK !!!">
   
@@ -20,780 +20,994 @@
   <meta name="twitter:title" content="PSAS SBK">
   <meta name="twitter:description" content="K">
   <meta name="twitter:image" content="https://danakaget-dana.vercel.app/thumbnail.jpg">
-    <title>TikTok Matrix Booster</title>
+    <title>TIKTOK BOOSTER MATRIX</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Roboto+Mono:wght@300;400;500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700;900&family=Rajdhani:wght@300;400;500;600&display=swap" rel="stylesheet">
     <style>
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
-        
+
+        :root {
+            --matrix-green: #00ff41;
+            --dark-bg: #0a0a0a;
+            --terminal-bg: #0f0f0f;
+            --border-glow: #00ff4144;
+            --text-glow: rgba(0, 255, 65, 0.7);
+            --accent-gray: #aaaaaa;
+            --panel-bg: rgba(15, 15, 15, 0.95);
+        }
+
         body {
-            font-family: 'Roboto Mono', monospace;
-            background-color: #0a0a0a;
-            color: #e0e0e0;
-            line-height: 1.6;
+            font-family: 'Rajdhani', sans-serif;
+            background-color: var(--dark-bg);
+            color: #ffffff;
             min-height: 100vh;
             overflow-x: hidden;
+            background-image: 
+                radial-gradient(circle at 20% 80%, rgba(0, 255, 65, 0.03) 0%, transparent 40%),
+                radial-gradient(circle at 80% 20%, rgba(0, 255, 65, 0.03) 0%, transparent 40%);
+            position: relative;
         }
-        
-        .matrix-bg {
+
+        /* Matrix rain background */
+        #matrixCanvas {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            z-index: -2;
-            opacity: 0.03;
-            background: 
-                repeating-linear-gradient(
-                    0deg,
-                    transparent,
-                    transparent 2px,
-                    rgba(255, 255, 255, 0.05) 2px,
-                    rgba(255, 255, 255, 0.05) 4px
-                ),
-                repeating-linear-gradient(
-                    90deg,
-                    transparent,
-                    transparent 2px,
-                    rgba(255, 255, 255, 0.05) 2px,
-                    rgba(255, 255, 255, 0.05) 4px
-                );
+            z-index: -1;
+            opacity: 0.15;
         }
-        
+
         .scan-line {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
-            height: 5px;
-            background: linear-gradient(to bottom, rgba(255,255,255,0.1), rgba(255,255,255,0));
-            z-index: -1;
-            animation: scan 3s linear infinite;
-            opacity: 0.3;
+            height: 2px;
+            background: linear-gradient(to right, transparent, var(--matrix-green), transparent);
+            z-index: 999;
+            animation: scan 4s linear infinite;
+            box-shadow: 0 0 10px var(--matrix-green);
+            opacity: 0.7;
         }
-        
+
         @keyframes scan {
             0% { top: 0%; }
             100% { top: 100%; }
         }
-        
+
+        .glitch-text {
+            position: relative;
+            text-shadow: 
+                0.05em 0 0 rgba(255, 0, 0, 0.75),
+                -0.025em -0.05em 0 rgba(0, 255, 0, 0.75),
+                0.025em 0.05em 0 rgba(0, 0, 255, 0.75);
+            animation: glitch 1500ms infinite;
+        }
+
+        @keyframes glitch {
+            0% { text-shadow: 0.05em 0 0 rgba(255, 0, 0, 0.75), -0.05em -0.025em 0 rgba(0, 255, 0, 0.75), -0.025em 0.05em 0 rgba(0, 0, 255, 0.75); }
+            14% { text-shadow: 0.05em 0 0 rgba(255, 0, 0, 0.75), -0.05em -0.025em 0 rgba(0, 255, 0, 0.75), -0.025em 0.05em 0 rgba(0, 0, 255, 0.75); }
+            15% { text-shadow: -0.05em -0.025em 0 rgba(255, 0, 0, 0.75), 0.025em 0.025em 0 rgba(0, 255, 0, 0.75), -0.05em -0.05em 0 rgba(0, 0, 255, 0.75); }
+            49% { text-shadow: -0.05em -0.025em 0 rgba(255, 0, 0, 0.75), 0.025em 0.025em 0 rgba(0, 255, 0, 0.75), -0.05em -0.05em 0 rgba(0, 0, 255, 0.75); }
+            50% { text-shadow: 0.025em 0.05em 0 rgba(255, 0, 0, 0.75), 0.05em 0 0 rgba(0, 255, 0, 0.75), 0 -0.05em 0 rgba(0, 0, 255, 0.75); }
+            99% { text-shadow: 0.025em 0.05em 0 rgba(255, 0, 0, 0.75), 0.05em 0 0 rgba(0, 255, 0, 0.75), 0 -0.05em 0 rgba(0, 0, 255, 0.75); }
+            100% { text-shadow: -0.025em 0 0 rgba(255, 0, 0, 0.75), -0.025em -0.025em 0 rgba(0, 255, 0, 0.75), -0.025em -0.05em 0 rgba(0, 0, 255, 0.75); }
+        }
+
         .container {
-            max-width: 1200px;
+            max-width: 1300px;
             margin: 0 auto;
             padding: 20px;
+            position: relative;
+            z-index: 1;
         }
-        
+
         header {
             text-align: center;
-            padding: 30px 0;
-            border-bottom: 1px solid #333;
+            padding: 40px 0 30px;
             position: relative;
         }
-        
+
+        .logo-grid {
+            display: grid;
+            grid-template-columns: auto 1fr;
+            align-items: center;
+            gap: 20px;
+            margin-bottom: 25px;
+            justify-content: center;
+        }
+
+        .hexagon {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, var(--matrix-green), #00cc33);
+            clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            animation: pulse 3s infinite;
+            box-shadow: 0 0 30px var(--matrix-green);
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); box-shadow: 0 0 30px var(--matrix-green); }
+            50% { transform: scale(1.05); box-shadow: 0 0 50px var(--matrix-green); }
+        }
+
+        .hexagon i {
+            font-size: 36px;
+            color: #000;
+        }
+
+        .header-title {
+            text-align: left;
+        }
+
         h1 {
-            font-family: 'Share Tech Mono', monospace;
-            font-size: 3.2rem;
-            color: #ffffff;
-            text-transform: uppercase;
-            letter-spacing: 4px;
-            margin-bottom: 10px;
-            text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
-            position: relative;
-        }
-        
-        h1:after {
-            content: '_';
-            animation: blink 1s infinite;
-            position: absolute;
-        }
-        
-        @keyframes blink {
-            0%, 100% { opacity: 1; }
-            50% { opacity: 0; }
-        }
-        
-        .subtitle {
-            color: #aaa;
-            font-size: 1.1rem;
+            font-family: 'Orbitron', sans-serif;
+            font-size: 3.5rem;
+            font-weight: 900;
+            background: linear-gradient(90deg, #fff, var(--matrix-green));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            letter-spacing: 3px;
             margin-bottom: 5px;
-            letter-spacing: 1px;
+            text-transform: uppercase;
         }
-        
-        .tagline {
-            color: #888;
-            font-size: 0.9rem;
-            font-style: italic;
+
+        .subtitle {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1.3rem;
+            color: var(--accent-gray);
+            letter-spacing: 5px;
+            text-transform: uppercase;
         }
-        
-        .terminal-box {
-            background-color: rgba(15, 15, 15, 0.9);
-            border: 1px solid #333;
-            border-radius: 0;
-            padding: 25px;
+
+        .status-bar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: rgba(10, 10, 10, 0.9);
+            border: 1px solid rgba(0, 255, 65, 0.3);
+            border-radius: 8px;
+            padding: 15px 25px;
             margin: 30px 0;
-            box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 0 20px rgba(0, 255, 65, 0.1);
+        }
+
+        .status-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .status-dot {
+            width: 12px;
+            height: 12px;
+            background-color: var(--matrix-green);
+            border-radius: 50%;
+            animation: blink-dot 2s infinite;
+        }
+
+        @keyframes blink-dot {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.3; }
+        }
+
+        .status-text {
+            color: var(--accent-gray);
+            font-size: 1rem;
+            font-weight: 500;
+        }
+
+        .status-value {
+            color: var(--matrix-green);
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1.1rem;
+            font-weight: 700;
+        }
+
+        .dashboard {
+            display: grid;
+            grid-template-columns: 1.2fr 0.8fr;
+            gap: 30px;
+            margin-top: 20px;
+        }
+
+        @media (max-width: 1024px) {
+            .dashboard {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .panel {
+            background: var(--panel-bg);
+            border: 1px solid rgba(0, 255, 65, 0.2);
+            border-radius: 12px;
+            padding: 30px;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
             position: relative;
             overflow: hidden;
         }
-        
-        .terminal-box:before {
+
+        .panel::before {
             content: '';
             position: absolute;
             top: 0;
             left: 0;
-            width: 100%;
+            right: 0;
             height: 3px;
-            background: linear-gradient(90deg, #555, #888, #555);
+            background: linear-gradient(90deg, transparent, var(--matrix-green), transparent);
         }
-        
-        .terminal-header {
-            display: flex;
-            align-items: center;
-            margin-bottom: 25px;
-            padding-bottom: 15px;
-            border-bottom: 1px solid #333;
-        }
-        
-        .terminal-icon {
-            width: 40px;
-            height: 40px;
-            background-color: #222;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin-right: 15px;
-            color: #aaa;
-            font-size: 18px;
-            border: 1px solid #444;
-        }
-        
-        .terminal-title {
-            font-family: 'Share Tech Mono', monospace;
+
+        .panel-title {
+            font-family: 'Orbitron', sans-serif;
             font-size: 1.8rem;
-            color: #fff;
-            letter-spacing: 1px;
+            color: var(--matrix-green);
+            margin-bottom: 25px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
         }
-        
+
+        .panel-title i {
+            font-size: 1.5rem;
+        }
+
         .input-group {
             margin-bottom: 25px;
         }
-        
+
         .input-label {
             display: block;
-            margin-bottom: 10px;
-            color: #bbb;
-            font-size: 1rem;
-            font-weight: 500;
+            margin-bottom: 12px;
+            color: var(--accent-gray);
+            font-size: 1.1rem;
+            font-weight: 600;
             text-transform: uppercase;
             letter-spacing: 1px;
         }
-        
+
         .input-field {
             width: 100%;
-            padding: 15px;
-            background-color: #111;
-            border: 1px solid #444;
-            border-radius: 0;
-            color: #e0e0e0;
-            font-size: 1rem;
-            font-family: 'Roboto Mono', monospace;
+            padding: 18px 20px;
+            background: rgba(20, 20, 20, 0.9);
+            border: 1px solid rgba(0, 255, 65, 0.3);
+            border-radius: 8px;
+            color: #fff;
+            font-size: 1.1rem;
+            font-family: 'Rajdhani', sans-serif;
             transition: all 0.3s;
         }
-        
+
         .input-field:focus {
             outline: none;
-            border-color: #888;
-            box-shadow: 0 0 10px rgba(255, 255, 255, 0.1);
+            border-color: var(--matrix-green);
+            box-shadow: 0 0 20px rgba(0, 255, 65, 0.3);
         }
-        
-        .boost-types {
-            display: grid;
-            grid-template-columns: repeat(5, 1fr);
-            gap: 10px;
-            margin-top: 10px;
+
+        .input-field::placeholder {
+            color: #666;
         }
-        
-        @media (max-width: 768px) {
-            .boost-types {
-                grid-template-columns: repeat(3, 1fr);
-            }
-        }
-        
-        .boost-type {
-            padding: 15px 10px;
-            background-color: #111;
-            border: 1px solid #444;
-            color: #aaa;
-            text-align: center;
-            cursor: pointer;
-            transition: all 0.3s;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-        }
-        
-        .boost-type i {
-            font-size: 20px;
-            margin-bottom: 8px;
-            color: #888;
-        }
-        
-        .boost-type:hover {
-            background-color: #222;
-            border-color: #777;
-            color: #ddd;
-        }
-        
-        .boost-type.active {
-            background-color: #222;
-            border-color: #fff;
-            color: #fff;
-            box-shadow: 0 0 15px rgba(255, 255, 255, 0.1);
-        }
-        
-        .boost-type.active i {
-            color: #fff;
-        }
-        
-        .amount-presets {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 10px;
-            margin-top: 10px;
-        }
-        
-        .amount-preset {
-            padding: 12px 20px;
-            background-color: #111;
-            border: 1px solid #444;
-            color: #aaa;
-            cursor: pointer;
-            transition: all 0.3s;
-            flex-grow: 1;
-            text-align: center;
-            font-family: 'Share Tech Mono', monospace;
-        }
-        
-        .amount-preset:hover {
-            background-color: #222;
-            border-color: #777;
-            color: #ddd;
-        }
-        
-        .amount-preset.active {
-            background-color: #222;
-            border-color: #fff;
-            color: #fff;
-        }
-        
-        .custom-amount-container {
-            margin-top: 20px;
-        }
-        
-        .custom-range {
-            width: 100%;
-            height: 6px;
-            -webkit-appearance: none;
-            background: #333;
-            border-radius: 0;
-            outline: none;
-            margin: 15px 0;
-        }
-        
-        .custom-range::-webkit-slider-thumb {
-            -webkit-appearance: none;
-            width: 20px;
-            height: 20px;
-            background: #fff;
-            border-radius: 0;
-            cursor: pointer;
-            border: 1px solid #444;
-        }
-        
-        .range-info {
-            display: flex;
-            justify-content: space-between;
-            color: #888;
-            font-size: 0.9rem;
-            margin-top: 5px;
-        }
-        
-        .range-value {
-            color: #fff;
-            font-weight: bold;
-            font-family: 'Share Tech Mono', monospace;
-        }
-        
-        .button-group {
-            display: flex;
-            gap: 15px;
-            margin-top: 30px;
-        }
-        
-        .btn {
-            padding: 16px 30px;
-            border: 1px solid #444;
-            border-radius: 0;
-            font-size: 1.1rem;
-            font-weight: 500;
-            cursor: pointer;
-            transition: all 0.3s;
-            flex: 1;
-            text-align: center;
-            font-family: 'Share Tech Mono', monospace;
-            letter-spacing: 1px;
-            text-transform: uppercase;
-        }
-        
-        .btn i {
-            margin-right: 10px;
-        }
-        
-        .btn-primary {
-            background-color: #222;
-            color: #fff;
-        }
-        
-        .btn-primary:hover {
-            background-color: #333;
-            border-color: #888;
-            box-shadow: 0 0 15px rgba(255, 255, 255, 0.1);
-        }
-        
-        .btn-secondary {
-            background-color: #111;
-            color: #aaa;
-        }
-        
-        .btn-secondary:hover {
-            background-color: #222;
-            color: #ddd;
-        }
-        
-        .terminal-output {
-            margin-top: 30px;
-            background-color: #0a0a0a;
-            border: 1px solid #333;
-            padding: 20px;
-            min-height: 300px;
-            font-family: 'Share Tech Mono', monospace;
-            font-size: 0.9rem;
-            overflow-y: auto;
-            position: relative;
-        }
-        
-        .terminal-output:before {
-            content: 'JenzTyzz.id Null';
-            position: absolute;
-            top: -12px;
-            left: 20px;
-            background-color: #0a0a0a;
-            padding: 0 10px;
-            color: #888;
-            font-size: 0.8rem;
-        }
-        
-        .output-line {
-            margin-bottom: 10px;
-            color: #ccc;
-            display: flex;
-        }
-        
-        .output-line:before {
-            content: '>';
-            color: #888;
-            margin-right: 10px;
-        }
-        
-        .output-line.success {
-            color: #fff;
-        }
-        
-        .output-line.error {
-            color: #888;
-        }
-        
-        .output-line.system {
-            color: #aaa;
-            font-style: italic;
-        }
-        
-        .loading {
-            display: none;
-            text-align: center;
-            padding: 40px 0;
-        }
-        
-        .loading.show {
-            display: block;
-        }
-        
-        .matrix-loader {
-            width: 60px;
-            height: 60px;
-            margin: 0 auto 20px;
-            position: relative;
-        }
-        
-        .matrix-loader:before, .matrix-loader:after {
-            content: '';
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            border: 2px solid #555;
-            box-sizing: border-box;
-        }
-        
-        .matrix-loader:before {
-            animation: matrix-loader-1 2s linear infinite;
-        }
-        
-        .matrix-loader:after {
-            animation: matrix-loader-2 2s linear infinite;
-        }
-        
-        @keyframes matrix-loader-1 {
-            0% { transform: rotate(0deg); }
-            25% { transform: rotate(90deg); }
-            50% { transform: rotate(180deg); }
-            75% { transform: rotate(270deg); }
-            100% { transform: rotate(360deg); }
-        }
-        
-        @keyframes matrix-loader-2 {
-            0% { transform: rotate(0deg); }
-            25% { transform: rotate(-90deg); }
-            50% { transform: rotate(-180deg); }
-            75% { transform: rotate(-270deg); }
-            100% { transform: rotate(-360deg); }
-        }
-        
-        .loading-text {
-            color: #888;
-            font-family: 'Share Tech Mono', monospace;
-            letter-spacing: 2px;
-        }
-        
-        .stats-container {
+
+        .boost-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
             gap: 15px;
-            margin-top: 25px;
+            margin-top: 15px;
         }
-        
-        .stat-box {
-            background-color: #111;
-            border: 1px solid #333;
-            padding: 20px;
+
+        @media (max-width: 768px) {
+            .boost-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        .boost-card {
+            background: rgba(20, 20, 20, 0.9);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            padding: 25px 15px;
             text-align: center;
+            cursor: pointer;
+            transition: all 0.3s;
+            position: relative;
+            overflow: hidden;
         }
-        
-        .stat-value {
-            font-family: 'Share Tech Mono', monospace;
-            font-size: 2rem;
+
+        .boost-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--matrix-green);
+            box-shadow: 0 10px 20px rgba(0, 255, 65, 0.2);
+        }
+
+        .boost-card.active {
+            background: rgba(0, 255, 65, 0.1);
+            border-color: var(--matrix-green);
+            box-shadow: 0 0 30px rgba(0, 255, 65, 0.3);
+        }
+
+        .boost-icon {
+            font-size: 32px;
+            color: var(--accent-gray);
+            margin-bottom: 15px;
+            transition: all 0.3s;
+        }
+
+        .boost-card.active .boost-icon {
+            color: var(--matrix-green);
+        }
+
+        .boost-name {
+            font-size: 1.2rem;
+            font-weight: 600;
             color: #fff;
             margin-bottom: 5px;
-        }
-        
-        .stat-label {
-            color: #888;
-            font-size: 0.9rem;
             text-transform: uppercase;
             letter-spacing: 1px;
         }
-        
-        .progress-container {
+
+        .boost-desc {
+            font-size: 0.9rem;
+            color: var(--accent-gray);
+        }
+
+        .amount-selector {
             margin-top: 25px;
         }
-        
-        .progress-bar {
-            height: 10px;
-            background-color: #222;
-            border: 1px solid #333;
-            margin-top: 10px;
-            overflow: hidden;
+
+        .amount-presets {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin-bottom: 20px;
         }
-        
-        .progress-fill {
-            height: 100%;
-            background-color: #777;
-            width: 0%;
-            transition: width 0.5s ease;
+
+        .amount-btn {
+            flex: 1;
+            min-width: 120px;
+            padding: 16px 10px;
+            background: rgba(20, 20, 20, 0.9);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 8px;
+            color: var(--accent-gray);
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-align: center;
+            font-family: 'Orbitron', sans-serif;
         }
-        
-        .progress-info {
+
+        .amount-btn:hover {
+            border-color: var(--matrix-green);
+            color: #fff;
+        }
+
+        .amount-btn.active {
+            background: rgba(0, 255, 65, 0.1);
+            border-color: var(--matrix-green);
+            color: var(--matrix-green);
+            box-shadow: 0 0 20px rgba(0, 255, 65, 0.2);
+        }
+
+        .custom-amount {
+            margin-top: 25px;
+        }
+
+        .range-header {
             display: flex;
             justify-content: space-between;
-            color: #888;
-            font-size: 0.9rem;
-            margin-top: 5px;
+            margin-bottom: 10px;
         }
-        
+
+        .range-label {
+            color: var(--accent-gray);
+            font-weight: 600;
+        }
+
+        .range-value {
+            color: var(--matrix-green);
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1.3rem;
+            font-weight: 700;
+        }
+
+        .range-slider {
+            width: 100%;
+            height: 10px;
+            -webkit-appearance: none;
+            background: rgba(20, 20, 20, 0.9);
+            border-radius: 5px;
+            outline: none;
+        }
+
+        .range-slider::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            width: 26px;
+            height: 26px;
+            background: var(--matrix-green);
+            border-radius: 50%;
+            cursor: pointer;
+            box-shadow: 0 0 20px var(--matrix-green);
+            border: 3px solid #000;
+        }
+
+        .range-limits {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 8px;
+            color: #666;
+            font-size: 0.9rem;
+        }
+
+        .action-buttons {
+            display: flex;
+            gap: 20px;
+            margin-top: 40px;
+        }
+
+        .action-btn {
+            flex: 1;
+            padding: 22px 20px;
+            border: none;
+            border-radius: 10px;
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1.2rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .action-btn i {
+            font-size: 1.5rem;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--matrix-green), #00cc33);
+            color: #000;
+            box-shadow: 0 10px 30px rgba(0, 255, 65, 0.4);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(0, 255, 65, 0.6);
+        }
+
+        .btn-secondary {
+            background: rgba(20, 20, 20, 0.9);
+            color: var(--accent-gray);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .btn-secondary:hover {
+            background: rgba(30, 30, 30, 0.9);
+            color: #fff;
+            border-color: var(--matrix-green);
+        }
+
+        .terminal {
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .terminal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 25px;
+        }
+
+        .terminal-title {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1.5rem;
+            color: var(--matrix-green);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .terminal-status {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .status-indicator {
+            width: 12px;
+            height: 12px;
+            background-color: var(--matrix-green);
+            border-radius: 50%;
+            animation: pulse-green 2s infinite;
+        }
+
+        @keyframes pulse-green {
+            0%, 100% { opacity: 1; box-shadow: 0 0 10px var(--matrix-green); }
+            50% { opacity: 0.5; box-shadow: 0 0 20px var(--matrix-green); }
+        }
+
+        .status-text {
+            color: var(--matrix-green);
+            font-weight: 600;
+            font-size: 1rem;
+        }
+
+        .terminal-output {
+            flex-grow: 1;
+            background: rgba(10, 10, 10, 0.9);
+            border: 1px solid rgba(0, 255, 65, 0.2);
+            border-radius: 10px;
+            padding: 25px;
+            overflow-y: auto;
+            max-height: 400px;
+            font-family: 'Courier New', monospace;
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        .terminal-line {
+            margin-bottom: 12px;
+            color: #ccc;
+            position: relative;
+            padding-left: 20px;
+        }
+
+        .terminal-line::before {
+            content: '>';
+            position: absolute;
+            left: 0;
+            color: var(--matrix-green);
+        }
+
+        .terminal-line.system {
+            color: var(--matrix-green);
+            font-weight: 600;
+        }
+
+        .terminal-line.success {
+            color: #fff;
+            text-shadow: 0 0 10px var(--matrix-green);
+        }
+
+        .terminal-line.error {
+            color: #ff5555;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            margin-top: 30px;
+        }
+
+        .stat-card {
+            background: rgba(20, 20, 20, 0.9);
+            border: 1px solid rgba(0, 255, 65, 0.2);
+            border-radius: 10px;
+            padding: 25px 20px;
+            text-align: center;
+        }
+
+        .stat-value {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 2.5rem;
+            color: var(--matrix-green);
+            margin-bottom: 10px;
+            text-shadow: 0 0 15px var(--matrix-green);
+        }
+
+        .stat-label {
+            color: var(--accent-gray);
+            font-size: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .progress-container {
+            margin-top: 30px;
+        }
+
+        .progress-header {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 15px;
+        }
+
+        .progress-label {
+            color: var(--accent-gray);
+            font-weight: 600;
+        }
+
+        .progress-percent {
+            color: var(--matrix-green);
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1.3rem;
+            font-weight: 700;
+        }
+
+        .progress-bar {
+            height: 12px;
+            background: rgba(20, 20, 20, 0.9);
+            border-radius: 6px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, var(--matrix-green), #00cc33);
+            border-radius: 6px;
+            width: 0%;
+            transition: width 0.5s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .progress-fill::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            bottom: 0;
+            right: 0;
+            background-image: linear-gradient(
+                -45deg,
+                transparent 33%,
+                rgba(255, 255, 255, 0.1) 33%,
+                rgba(255, 255, 255, 0.1) 66%,
+                transparent 66%
+            );
+            background-size: 20px 20px;
+            animation: move-stripes 1s linear infinite;
+        }
+
+        @keyframes move-stripes {
+            0% { background-position: 0 0; }
+            100% { background-position: 20px 0; }
+        }
+
         footer {
             text-align: center;
-            margin-top: 50px;
+            margin-top: 60px;
             padding: 30px 0;
             color: #666;
-            font-size: 0.8rem;
-            border-top: 1px solid #333;
+            font-size: 0.9rem;
+            border-top: 1px solid rgba(0, 255, 65, 0.1);
         }
-        
+
         .footer-links {
             display: flex;
             justify-content: center;
-            gap: 20px;
-            margin-top: 15px;
+            gap: 30px;
+            margin-top: 20px;
         }
-        
+
         .footer-link {
-            color: #777;
+            color: var(--accent-gray);
             text-decoration: none;
             transition: color 0.3s;
+            font-weight: 500;
         }
-        
+
         .footer-link:hover {
-            color: #aaa;
+            color: var(--matrix-green);
         }
-        
+
         .blink {
             animation: blink 1s infinite;
         }
-        
-        .matrix-text {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            pointer-events: none;
-            z-index: -1;
-            opacity: 0.05;
-            font-family: 'Share Tech Mono', monospace;
-            font-size: 12px;
-            color: #fff;
-            overflow: hidden;
+
+        @keyframes blink {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.3; }
         }
-        
+
         @media (max-width: 768px) {
             h1 {
-                font-size: 2.2rem;
-                letter-spacing: 2px;
+                font-size: 2.5rem;
             }
             
-            .boost-types {
-                grid-template-columns: repeat(2, 1fr);
+            .subtitle {
+                font-size: 1rem;
+                letter-spacing: 3px;
             }
             
-            .button-group {
+            .status-bar {
                 flex-direction: column;
+                gap: 15px;
+                align-items: flex-start;
+            }
+            
+            .action-buttons {
+                flex-direction: column;
+            }
+            
+            .amount-btn {
+                min-width: calc(50% - 6px);
+            }
+            
+            .stats-grid {
+                grid-template-columns: repeat(2, 1fr);
             }
         }
     </style>
 </head>
 <body>
-    <div class="matrix-bg"></div>
+    <canvas id="matrixCanvas"></canvas>
     <div class="scan-line"></div>
-    <div class="matrix-text" id="matrixText"></div>
     
     <div class="container">
         <header>
-            <h1>TIKTOK MATRIX BOOSTER</h1>
-            <p class="subtitle">SYSTEM_INTERFACE_V2.5</p>
-            <p class="tagline">ENHANCE YOUR TIKTOK PRESENCE</p>
+            <div class="logo-grid">
+                <div class="hexagon">
+                    <i class="fas fa-bolt"></i>
+                </div>
+                <div class="header-title">
+                    <h1 class="glitch-text">TIKTOK BOOSTER</h1>
+                    <p class="subtitle">MATRIX INTERFACE v3.0</p>
+                </div>
+            </div>
+            
+            <div class="status-bar">
+                <div class="status-item">
+                    <div class="status-dot"></div>
+                    <div>
+                        <div class="status-text">SYSTEM STATUS</div>
+                        <div class="status-value" id="systemStatus">OPERATIONAL</div>
+                    </div>
+                </div>
+                <div class="status-item">
+                    <div class="status-dot"></div>
+                    <div>
+                        <div class="status-text">BOOSTS TODAY</div>
+                        <div class="status-value" id="boostsToday">1,247</div>
+                    </div>
+                </div>
+                <div class="status-item">
+                    <div class="status-dot"></div>
+                    <div>
+                        <div class="status-text">SUCCESS RATE</div>
+                        <div class="status-value" id="successRate">99.8%</div>
+                    </div>
+                </div>
+            </div>
         </header>
         
-        <div class="terminal-box">
-            <div class="terminal-header">
-                <div class="terminal-icon">
-                    <i class="fas fa-terminal"></i>
-                </div>
-                <div class="terminal-title">BOOST_CONTROL_PANEL</div>
-            </div>
-            
-            <div class="input-group">
-                <label class="input-label">
-                    <i class="fas fa-link"></i> TIKTOK_URL_INPUT
-                </label>
-                <input type="url" class="input-field" id="tiktokUrl" placeholder="https://www.tiktok.com/@username/video/1234567890" required>
-            </div>
-            
-            <div class="input-group">
-                <label class="input-label">
-                    <i class="fas fa-bolt"></i> BOOST_TYPE_SELECTION
-                </label>
-                <div class="boost-types">
-                    <div class="boost-type active" data-type="likes">
-                        <i class="fas fa-heart"></i>
-                        <span>LIKES</span>
-                    </div>
-                    <div class="boost-type" data-type="views">
-                        <i class="fas fa-eye"></i>
-                        <span>VIEWS</span>
-                    </div>
-                    <div class="boost-type" data-type="followers">
-                        <i class="fas fa-users"></i>
-                        <span>FOLLOWERS</span>
-                    </div>
-                    <div class="boost-type" data-type="comments">
-                        <i class="fas fa-comment"></i>
-                        <span>COMMENTS</span>
-                    </div>
-                    <div class="boost-type" data-type="shares">
-                        <i class="fas fa-share"></i>
-                        <span>SHARES</span>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="input-group">
-                <label class="input-label">
-                    <i class="fas fa-hashtag"></i> QUANTITY_SELECTION
-                </label>
-                <div class="amount-presets">
-                    <div class="amount-preset active" data-amount="500">500</div>
-                    <div class="amount-preset" data-amount="1000">1K</div>
-                    <div class="amount-preset" data-amount="2500">2.5K</div>
-                    <div class="amount-preset" data-amount="5000">5K</div>
-                    <div class="amount-preset" data-amount="10000">10K</div>
+        <div class="dashboard">
+            <div class="panel">
+                <div class="panel-title">
+                    <i class="fas fa-sliders-h"></i>
+                    BOOST CONTROL PANEL
                 </div>
                 
-                <div class="custom-amount-container">
-                    <div class="range-info">
-                        <span>CUSTOM_RANGE</span>
-                        <span class="range-value" id="rangeValue">5,000</span>
+                <div class="input-group">
+                    <label class="input-label">TIKTOK URL</label>
+                    <input type="url" class="input-field" id="tiktokUrl" placeholder="https://www.tiktok.com/@username/video/1234567890" required>
+                </div>
+                
+                <div class="input-group">
+                    <label class="input-label">BOOST TYPE</label>
+                    <div class="boost-grid">
+                        <div class="boost-card active" data-type="likes">
+                            <div class="boost-icon">
+                                <i class="fas fa-heart"></i>
+                            </div>
+                            <div class="boost-name">LIKES</div>
+                            <div class="boost-desc">Increase engagement</div>
+                        </div>
+                        <div class="boost-card" data-type="views">
+                            <div class="boost-icon">
+                                <i class="fas fa-eye"></i>
+                            </div>
+                            <div class="boost-name">VIEWS</div>
+                            <div class="boost-desc">Boost visibility</div>
+                        </div>
+                        <div class="boost-card" data-type="followers">
+                            <div class="boost-icon">
+                                <i class="fas fa-users"></i>
+                            </div>
+                            <div class="boost-name">FOLLOWERS</div>
+                            <div class="boost-desc">Grow audience</div>
+                        </div>
+                        <div class="boost-card" data-type="comments">
+                            <div class="boost-icon">
+                                <i class="fas fa-comment"></i>
+                            </div>
+                            <div class="boost-name">COMMENTS</div>
+                            <div class="boost-desc">Generate discussion</div>
+                        </div>
+                        <div class="boost-card" data-type="shares">
+                            <div class="boost-icon">
+                                <i class="fas fa-share"></i>
+                            </div>
+                            <div class="boost-name">SHARES</div>
+                            <div class="boost-desc">Increase reach</div>
+                        </div>
+                        <div class="boost-card" data-type="favorites">
+                            <div class="boost-icon">
+                                <i class="fas fa-star"></i>
+                            </div>
+                            <div class="boost-name">FAVORITES</div>
+                            <div class="boost-desc">Boost popularity</div>
+                        </div>
                     </div>
-                    <input type="range" min="100" max="50000" step="100" value="5000" class="custom-range" id="customRange">
-                    <div class="range-info">
-                        <span>100</span>
-                        <span>50,000</span>
+                </div>
+                
+                <div class="amount-selector">
+                    <label class="input-label">BOOST QUANTITY</label>
+                    <div class="amount-presets">
+                        <div class="amount-btn active" data-amount="500">500</div>
+                        <div class="amount-btn" data-amount="1000">1,000</div>
+                        <div class="amount-btn" data-amount="2500">2,500</div>
+                        <div class="amount-btn" data-amount="5000">5,000</div>
+                        <div class="amount-btn" data-amount="10000">10,000</div>
+                    </div>
+                    
+                    <div class="custom-amount">
+                        <div class="range-header">
+                            <div class="range-label">CUSTOM AMOUNT</div>
+                            <div class="range-value" id="rangeValue">5,000</div>
+                        </div>
+                        <input type="range" min="100" max="50000" step="100" value="5000" class="range-slider" id="customRange">
+                        <div class="range-limits">
+                            <span>100</span>
+                            <span>50,000</span>
+                        </div>
                     </div>
                 </div>
-            </div>
-            
-            <div class="button-group">
-                <button class="btn btn-primary" id="boostBtn">
-                    <i class="fas fa-play"></i> INITIATE_BOOST
-                </button>
-                <button class="btn btn-secondary" id="resetBtn">
-                    <i class="fas fa-redo"></i> SYSTEM_RESET
-                </button>
-            </div>
-        </div>
-        
-        <div class="terminal-box">
-            <div class="terminal-header">
-                <div class="terminal-icon">
-                    <i class="fas fa-desktop"></i>
-                </div>
-                <div class="terminal-title">SYSTEM_OUTPUT</div>
-            </div>
-            
-            <div class="loading" id="loading">
-                <div class="matrix-loader"></div>
-                <p class="loading-text">PROCESSING_REQUEST</p>
-                <p class="loading-text">ACCESSING_TIKTOK_API</p>
-            </div>
-            
-            <div class="terminal-output" id="terminalOutput">
-                <div class="output-line system">SYSTEM BOOT COMPLETE</div>
-                <div class="output-line system">TIKTOK MATRIX BOOSTER v2.5 ONLINE</div>
-                <div class="output-line system">READY FOR USER INPUT</div>
-                <div class="output-line">ENTER TIKTOK URL AND SELECT BOOST PARAMETERS</div>
-                <div class="output-line">PRESS [INITIATE_BOOST] TO COMMENCE PROCESS<span class="blink">_</span></div>
-            </div>
-            
-            <div class="stats-container">
-                <div class="stat-box">
-                    <div class="stat-value" id="successStat">0</div>
-                    <div class="stat-label">SUCCESSFUL</div>
-                </div>
-                <div class="stat-box">
-                    <div class="stat-value" id="remainingStat">0</div>
-                    <div class="stat-label">REMAINING</div>
-                </div>
-                <div class="stat-box">
-                    <div class="stat-value" id="speedStat">0</div>
-                    <div class="stat-label">PER_SECOND</div>
+                
+                <div class="action-buttons">
+                    <button class="action-btn btn-primary" id="boostBtn">
+                        <i class="fas fa-rocket"></i>
+                        INITIATE BOOST
+                    </button>
+                    <button class="action-btn btn-secondary" id="resetBtn">
+                        <i class="fas fa-redo"></i>
+                        RESET SYSTEM
+                    </button>
                 </div>
             </div>
             
-            <div class="progress-container">
-                <div class="progress-info">
-                    <span>BOOST_PROGRESS</span>
-                    <span id="progressPercent">0%</span>
+            <div class="panel terminal">
+                <div class="terminal-header">
+                    <div class="terminal-title">SYSTEM OUTPUT</div>
+                    <div class="terminal-status">
+                        <div class="status-indicator"></div>
+                        <div class="status-text" id="terminalStatus">READY</div>
+                    </div>
                 </div>
-                <div class="progress-bar">
-                    <div class="progress-fill" id="progressFill"></div>
+                
+                <div class="terminal-output" id="terminalOutput">
+                    <div class="terminal-line system">TIKTOK BOOSTER MATRIX v3.0</div>
+                    <div class="terminal-line system">SYSTEM INITIALIZATION COMPLETE</div>
+                    <div class="terminal-line system">CONNECTION TO TIKTOK API ESTABLISHED</div>
+                    <div class="terminal-line">Ready to process boost requests</div>
+                    <div class="terminal-line">Enter TikTok URL and select parameters</div>
+                    <div class="terminal-line">Press [INITIATE BOOST] to begin<span class="blink">_</span></div>
+                </div>
+                
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-value" id="successStat">0</div>
+                        <div class="stat-label">SUCCESSFUL</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-value" id="remainingStat">5,000</div>
+                        <div class="stat-label">REMAINING</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-value" id="speedStat">125</div>
+                        <div class="stat-label">PER SECOND</div>
+                    </div>
+                </div>
+                
+                <div class="progress-container">
+                    <div class="progress-header">
+                        <div class="progress-label">BOOST PROGRESS</div>
+                        <div class="progress-percent" id="progressPercent">0%</div>
+                    </div>
+                    <div class="progress-bar">
+                        <div class="progress-fill" id="progressFill"></div>
+                    </div>
                 </div>
             </div>
         </div>
         
         <footer>
-            <p>© 2023 TIKTOK MATRIX BOOSTER - SIMULATION INTERFACE</p>
-            <p>FOR EDUCATIONAL PURPOSES ONLY - NO AFFILIATION WITH TIKTOK</p>
+            <p>TIKTOK BOOSTER MATRIX © 2023 - ADVANCED BOOSTING TECHNOLOGY</p>
+            <p>PERFORMANCE-OPTIMIZED INTERFACE FOR MAXIMUM RESULTS</p>
             <div class="footer-links">
-                <a href="#" class="footer-link">PRIVACY_POLICY</a>
-                <a href="#" class="footer-link">TERMS_OF_USE</a>
-                <a href="#" class="footer-link">DISCLAIMER</a>
+                <a href="#" class="footer-link">PRIVACY</a>
+                <a href="#" class="footer-link">TERMS</a>
+                <a href="#" class="footer-link">SUPPORT</a>
                 <a href="#" class="footer-link">CONTACT</a>
             </div>
         </footer>
     </div>
 
     <script>
-        // Matrix text effect
-        const matrixText = document.getElementById('matrixText');
-        const matrixChars = "01010101010101010101010101ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789$+-*/=%\"'#&_(),.;:?!\\|{}<>[]^~";
+        // Matrix Rain Effect
+        const canvas = document.getElementById('matrixCanvas');
+        const ctx = canvas.getContext('2d');
         
-        function createMatrixText() {
-            const columns = Math.floor(window.innerWidth / 20);
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+        
+        const matrixChars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789$+-*/=%\"'#&_(),.;:?!\\|{}<>[]^~";
+        const fontSize = 16;
+        const columns = canvas.width / fontSize;
+        const drops = [];
+        
+        for(let i = 0; i < columns; i++) {
+            drops[i] = Math.floor(Math.random() * canvas.height / fontSize) * fontSize;
+        }
+        
+        function drawMatrix() {
+            ctx.fillStyle = 'rgba(10, 10, 10, 0.1)';
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
             
-            for (let i = 0; i < columns; i++) {
-                const char = document.createElement('div');
-                char.style.position = 'absolute';
-                char.style.left = `${i * 20}px`;
-                char.style.top = `${Math.random() * -100}px`;
-                char.style.fontSize = `${14 + Math.random() * 10}px`;
-                char.style.color = `rgba(255, 255, 255, ${0.1 + Math.random() * 0.1})`;
-                char.textContent = matrixChars[Math.floor(Math.random() * matrixChars.length)];
-                char.style.animation = `fall ${3 + Math.random() * 5}s linear infinite`;
-                matrixText.appendChild(char);
+            ctx.fillStyle = '#00ff41';
+            ctx.font = `${fontSize}px 'Courier New'`;
+            
+            for(let i = 0; i < drops.length; i++) {
+                const text = matrixChars[Math.floor(Math.random() * matrixChars.length)];
+                const x = i * fontSize;
+                const y = drops[i];
                 
-                // Add animation
-                const style = document.createElement('style');
-                style.textContent = `
-                    @keyframes fall {
-                        0% { top: -20px; opacity: 0; }
-                        10% { opacity: 0.8; }
-                        90% { opacity: 0.8; }
-                        100% { top: 100vh; opacity: 0; }
-                    }
-                `;
-                document.head.appendChild(style);
+                ctx.fillText(text, x, y);
+                
+                if(y > canvas.height && Math.random() > 0.975) {
+                    drops[i] = 0;
+                }
+                
+                drops[i] += fontSize;
             }
         }
         
+        setInterval(drawMatrix, 50);
+        
+        // Handle window resize
+        window.addEventListener('resize', function() {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        });
+        
         // DOM Elements
-        const boostTypeBtns = document.querySelectorAll('.boost-type');
-        const amountPresets = document.querySelectorAll('.amount-preset');
+        const boostCards = document.querySelectorAll('.boost-card');
+        const amountBtns = document.querySelectorAll('.amount-btn');
         const customRange = document.getElementById('customRange');
         const rangeValue = document.getElementById('rangeValue');
         const boostBtn = document.getElementById('boostBtn');
         const resetBtn = document.getElementById('resetBtn');
         const tiktokUrl = document.getElementById('tiktokUrl');
-        const loading = document.getElementById('loading');
         const terminalOutput = document.getElementById('terminalOutput');
+        const terminalStatus = document.getElementById('terminalStatus');
+        const systemStatus = document.getElementById('systemStatus');
         const progressFill = document.getElementById('progressFill');
         const progressPercent = document.getElementById('progressPercent');
         const successStat = document.getElementById('successStat');
         const remainingStat = document.getElementById('remainingStat');
         const speedStat = document.getElementById('speedStat');
+        const boostsToday = document.getElementById('boostsToday');
+        const successRate = document.getElementById('successRate');
         
         // Variables
         let selectedBoostType = 'likes';
@@ -811,13 +1025,14 @@
             const value = parseInt(customRange.value);
             selectedAmount = value;
             rangeValue.textContent = formatNumber(value);
+            remainingStat.textContent = formatNumber(value);
             
             // Update any active preset
-            amountPresets.forEach(preset => {
-                if (parseInt(preset.getAttribute('data-amount')) === value) {
-                    preset.classList.add('active');
+            amountBtns.forEach(btn => {
+                if (parseInt(btn.getAttribute('data-amount')) === value) {
+                    btn.classList.add('active');
                 } else {
-                    preset.classList.remove('active');
+                    btn.classList.remove('active');
                 }
             });
         }
@@ -825,7 +1040,7 @@
         // Add line to terminal output
         function addTerminalLine(text, className = "") {
             const line = document.createElement('div');
-            line.className = `output-line ${className}`;
+            line.className = `terminal-line ${className}`;
             line.innerHTML = text;
             terminalOutput.appendChild(line);
             
@@ -833,26 +1048,47 @@
             terminalOutput.scrollTop = terminalOutput.scrollHeight;
         }
         
+        // Initialize with random stats
+        function initializeStats() {
+            const todayBoosts = Math.floor(Math.random() * 2000) + 1000;
+            boostsToday.textContent = formatNumber(todayBoosts);
+            
+            const rate = (98 + Math.random() * 2).toFixed(1);
+            successRate.textContent = `${rate}%`;
+            
+            const speed = Math.floor(Math.random() * 200) + 50;
+            speedStat.textContent = formatNumber(speed);
+        }
+        
         // Initialize
         updateRangeValue();
-        createMatrixText();
+        initializeStats();
         
         // Event Listeners
         // Boost type selection
-        boostTypeBtns.forEach(btn => {
-            btn.addEventListener('click', function() {
-                boostTypeBtns.forEach(b => b.classList.remove('active'));
+        boostCards.forEach(card => {
+            card.addEventListener('click', function() {
+                boostCards.forEach(c => c.classList.remove('active'));
                 this.classList.add('active');
                 selectedBoostType = this.getAttribute('data-type');
                 
-                addTerminalLine(`BOOST_TYPE_SET: ${selectedBoostType.toUpperCase()}`, "system");
+                const typeNames = {
+                    'likes': 'LIKES',
+                    'views': 'VIEWS', 
+                    'followers': 'FOLLOWERS',
+                    'comments': 'COMMENTS',
+                    'shares': 'SHARES',
+                    'favorites': 'FAVORITES'
+                };
+                
+                addTerminalLine(`Boost type selected: ${typeNames[selectedBoostType]}`, "system");
             });
         });
         
         // Amount preset selection
-        amountPresets.forEach(preset => {
-            preset.addEventListener('click', function() {
-                amountPresets.forEach(p => p.classList.remove('active'));
+        amountBtns.forEach(btn => {
+            btn.addEventListener('click', function() {
+                amountBtns.forEach(b => b.classList.remove('active'));
                 this.classList.add('active');
                 
                 const amount = parseInt(this.getAttribute('data-amount'));
@@ -860,14 +1096,14 @@
                 customRange.value = amount;
                 updateRangeValue();
                 
-                addTerminalLine(`QUANTITY_SET: ${formatNumber(amount)}`, "system");
+                addTerminalLine(`Boost quantity set to: ${formatNumber(amount)}`, "system");
             });
         });
         
         // Custom range input
         customRange.addEventListener('input', updateRangeValue);
         customRange.addEventListener('change', function() {
-            addTerminalLine(`CUSTOM_QUANTITY_SET: ${formatNumber(selectedAmount)}`, "system");
+            addTerminalLine(`Custom quantity set: ${formatNumber(selectedAmount)}`, "system");
         });
         
         // Boost button click
@@ -875,32 +1111,32 @@
             // Validate URL
             const url = tiktokUrl.value.trim();
             if (!url) {
-                addTerminalLine("ERROR: NO_URL_PROVIDED", "error");
+                addTerminalLine("ERROR: No TikTok URL provided", "error");
                 tiktokUrl.focus();
                 return;
             }
             
             if (!url.includes('tiktok.com')) {
-                addTerminalLine("ERROR: INVALID_TIKTOK_URL", "error");
+                addTerminalLine("ERROR: Invalid TikTok URL format", "error");
                 tiktokUrl.focus();
                 return;
             }
             
             if (isProcessing) {
-                addTerminalLine("SYSTEM_BUSY: PROCESS_ALREADY_RUNNING", "error");
+                addTerminalLine("System busy: Boost process already running", "error");
                 return;
             }
             
-            // Start processing
+            // Start boost process
             startBoostProcess(url, selectedBoostType, selectedAmount);
         });
         
         // Reset button click
         resetBtn.addEventListener('click', function() {
             if (isProcessing) {
-                if (confirm('PROCESS_IN_PROGRESS: CONFIRM_TERMINATION?')) {
+                if (confirm('Boost process is active. Terminate process?')) {
                     stopBoostProcess();
-                    addTerminalLine("PROCESS_TERMINATED_BY_USER", "system");
+                    addTerminalLine("Boost process terminated by user", "system");
                 }
                 return;
             }
@@ -909,22 +1145,22 @@
             tiktokUrl.value = '';
             
             // Reset boost type to default
-            boostTypeBtns.forEach(btn => btn.classList.remove('active'));
-            document.querySelector('.boost-type[data-type="likes"]').classList.add('active');
+            boostCards.forEach(card => card.classList.remove('active'));
+            document.querySelector('.boost-card[data-type="likes"]').classList.add('active');
             selectedBoostType = 'likes';
             
             // Reset amount to default
-            amountPresets.forEach(p => p.classList.remove('active'));
-            document.querySelector('.amount-preset[data-amount="500"]').classList.add('active');
+            amountBtns.forEach(btn => btn.classList.remove('active'));
+            document.querySelector('.amount-btn[data-amount="500"]').classList.add('active');
             selectedAmount = 500;
             customRange.value = 500;
             updateRangeValue();
             
-            // Clear terminal except initial lines
-            const initialLines = document.querySelectorAll('.output-line.system, .output-line:not(.system)');
-            if (initialLines.length > 4) {
-                for (let i = 4; i < initialLines.length; i++) {
-                    initialLines[i].remove();
+            // Clear terminal except system lines
+            const terminalLines = document.querySelectorAll('.terminal-line');
+            if (terminalLines.length > 6) {
+                for (let i = 6; i < terminalLines.length; i++) {
+                    terminalLines[i].remove();
                 }
             }
             
@@ -932,11 +1168,13 @@
             progressFill.style.width = '0%';
             progressPercent.textContent = '0%';
             successStat.textContent = '0';
-            remainingStat.textContent = '0';
-            speedStat.textContent = '0';
+            remainingStat.textContent = formatNumber(selectedAmount);
             
-            addTerminalLine("SYSTEM_RESET_COMPLETE", "system");
-            addTerminalLine("READY_FOR_NEW_INPUT", "system");
+            addTerminalLine("System reset complete", "system");
+            addTerminalLine("Ready for new boost request", "system");
+            
+            terminalStatus.textContent = "READY";
+            systemStatus.textContent = "OPERATIONAL";
         });
         
         // Start boost process
@@ -946,40 +1184,28 @@
             // Update UI
             boostBtn.disabled = true;
             boostBtn.innerHTML = '<i class="fas fa-cog fa-spin"></i> PROCESSING...';
-            
-            // Show loading
-            loading.classList.add('show');
-            
-            // Clear terminal except system lines
-            const allLines = document.querySelectorAll('.output-line');
-            allLines.forEach(line => {
-                if (!line.classList.contains('system')) {
-                    line.remove();
-                }
-            });
+            terminalStatus.textContent = "PROCESSING";
+            systemStatus.textContent = "BOOST ACTIVE";
             
             // Add process start lines
-            addTerminalLine(`INITIATING_BOOST_PROCESS`, "system");
-            addTerminalLine(`TARGET_URL: ${url.substring(0, 50)}...`);
-            addTerminalLine(`BOOST_TYPE: ${type.toUpperCase()}`);
-            addTerminalLine(`QUANTITY: ${formatNumber(amount)}`);
-            addTerminalLine(`CONNECTING_TO_TIKTOK_API...`);
+            addTerminalLine("=== BOOST PROCESS INITIATED ===", "system");
+            addTerminalLine(`Target: ${url.substring(0, 60)}${url.length > 60 ? '...' : ''}`);
+            addTerminalLine(`Type: ${type.toUpperCase()}`);
+            addTerminalLine(`Quantity: ${formatNumber(amount)}`);
+            addTerminalLine("Establishing connection to TikTok servers...");
             
-            // Simulate API connection delay
+            // Simulate connection delay
             setTimeout(() => {
-                // Hide loading
-                loading.classList.remove('show');
+                addTerminalLine("Connection established successfully", "success");
+                addTerminalLine("Initiating data transfer protocol...");
                 
                 // Update button
-                boostBtn.innerHTML = '<i class="fas fa-stop"></i> STOP_PROCESS';
+                boostBtn.innerHTML = '<i class="fas fa-stop"></i> STOP BOOST';
                 boostBtn.disabled = false;
-                
-                addTerminalLine(`CONNECTION_ESTABLISHED`, "success");
-                addTerminalLine(`BEGINNING_DATA_TRANSFER...`);
                 
                 // Start progress simulation
                 simulateBoostProgress(url, type, amount);
-            }, 2500);
+            }, 2000);
         }
         
         // Stop boost process
@@ -988,11 +1214,11 @@
             clearInterval(progressInterval);
             
             // Update UI
-            boostBtn.innerHTML = '<i class="fas fa-play"></i> INITIATE_BOOST';
+            boostBtn.innerHTML = '<i class="fas fa-rocket"></i> INITIATE BOOST';
             boostBtn.disabled = false;
+            terminalStatus.textContent = "STOPPED";
             
-            addTerminalLine(`PROCESS_INTERRUPTED`, "error");
-            addTerminalLine(`DATA_TRANSFER_INCOMPLETE`, "error");
+            addTerminalLine("Boost process stopped", "system");
         }
         
         // Simulate boost progress
@@ -1000,7 +1226,7 @@
             let progress = 0;
             let successCount = 0;
             let remaining = amount;
-            const totalTime = Math.max(10, Math.min(amount / 100, 60)); // 10-60 seconds
+            const totalTime = Math.max(8, Math.min(amount / 150, 40)); // 8-40 seconds
             const updatesPerSecond = 10;
             const increment = 100 / (totalTime * updatesPerSecond);
             const successIncrement = amount / (totalTime * updatesPerSecond);
@@ -1008,6 +1234,7 @@
             
             // Update speed stat
             speedStat.textContent = formatNumber(speed);
+            terminalStatus.textContent = "BOOSTING";
             
             progressInterval = setInterval(() => {
                 if (!isProcessing) return;
@@ -1032,6 +1259,18 @@
                 successStat.textContent = formatNumber(Math.round(successCount));
                 remainingStat.textContent = formatNumber(Math.round(remaining));
                 
+                // Randomly add progress updates
+                if (Math.random() > 0.95) {
+                    const updateMsgs = [
+                        `Data packet transmitted: ${formatNumber(Math.round(successCount/10))}`,
+                        `Server response: Optimal`,
+                        `Transfer rate: ${formatNumber(speed)}/sec`,
+                        `Encryption layer active`,
+                        `Bypassing rate limits...`
+                    ];
+                    addTerminalLine(updateMsgs[Math.floor(Math.random() * updateMsgs.length)]);
+                }
+                
             }, 1000 / updatesPerSecond);
         }
         
@@ -1041,38 +1280,47 @@
             isProcessing = false;
             
             // Update button
-            boostBtn.innerHTML = '<i class="fas fa-play"></i> INITIATE_BOOST';
+            boostBtn.innerHTML = '<i class="fas fa-rocket"></i> INITIATE BOOST';
             boostBtn.disabled = false;
+            terminalStatus.textContent = "COMPLETE";
+            systemStatus.textContent = "OPERATIONAL";
             
             if (success) {
-                addTerminalLine(`DATA_TRANSFER_COMPLETE`, "success");
-                addTerminalLine(`SUCCESSFULLY_ADDED: ${formatNumber(amount)} ${type.toUpperCase()}`, "success");
-                addTerminalLine(`PROCESS_FINISHED: ${new Date().toLocaleTimeString()}`, "system");
+                addTerminalLine("=== BOOST PROCESS COMPLETE ===", "system");
+                addTerminalLine(`Successfully boosted: ${formatNumber(amount)} ${type.toUpperCase()}`, "success");
+                addTerminalLine(`Target URL: ${url.substring(0, 40)}...`, "success");
+                addTerminalLine(`Completion time: ${new Date().toLocaleTimeString()}`, "system");
                 
-                // Randomize stats for next run
+                // Update today's boost count
+                const currentBoosts = parseInt(boostsToday.textContent.replace(/,/g, ''));
+                boostsToday.textContent = formatNumber(currentBoosts + 1);
+                
+                // Show completion effect
                 setTimeout(() => {
-                    successStat.textContent = formatNumber(Math.floor(Math.random() * 10000) + 5000);
-                    remainingStat.textContent = formatNumber(Math.floor(Math.random() * 5000) + 1000);
-                    speedStat.textContent = formatNumber(Math.floor(Math.random() * 200) + 50);
-                }, 1000);
+                    document.querySelectorAll('.terminal-line').forEach(line => {
+                        if (line.classList.contains('success')) {
+                            line.style.animation = 'pulse 2s';
+                        }
+                    });
+                }, 500);
             } else {
-                addTerminalLine(`PROCESS_FAILED`, "error");
-                addTerminalLine(`SYSTEM_ERROR: UNABLE_TO_COMPLETE_TRANSFER`, "error");
+                addTerminalLine("=== BOOST PROCESS FAILED ===", "system");
+                addTerminalLine("Error: Unable to complete boost operation", "error");
             }
             
-            addTerminalLine(`READY_FOR_NEXT_OPERATION`, "system");
+            addTerminalLine("System ready for next operation", "system");
         }
         
         // Add some interaction effects
         tiktokUrl.addEventListener('focus', function() {
-            addTerminalLine(`USER_INPUT_DETECTED: URL_FIELD`, "system");
+            addTerminalLine("URL input field active", "system");
         });
         
-        // Initialize with random stats
+        // Initialize with random data
         window.addEventListener('load', function() {
-            successStat.textContent = formatNumber(Math.floor(Math.random() * 10000) + 5000);
-            remainingStat.textContent = formatNumber(Math.floor(Math.random() * 5000) + 1000);
-            speedStat.textContent = formatNumber(Math.floor(Math.random() * 200) + 50);
+            setTimeout(() => {
+                addTerminalLine("System check complete - All systems operational", "system");
+            }, 1000);
         });
     </script>
 </body>
